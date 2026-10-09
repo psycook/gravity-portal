@@ -1,0 +1,63 @@
+{% assign card_design = banking_account.rfd_carddesign.value %}
+{% unless card_design %}
+{% if banking_account.rfd_producttype.value == 100000005 or banking_account.rfd_producttype.value == 100000007 %}
+{% assign card_design = 228660004 %}
+{% else %}{% assign card_design = 228660003 %}{% endif %}
+{% endunless %}
+{% case card_design %}
+{% when 228660000 %}
+{% assign card_tier = 'Launchpad' %}
+{% assign card_planet = 'Moon' %}
+{% assign card_instrument = 'Debit' %}
+<img src="/gravity-card-01-moon-launchpad-debit.jpg" alt="Moon Launchpad debit mock card" width="360" loading="lazy">
+{% when 228660001 %}
+{% assign card_tier = 'Starter' %}
+{% assign card_planet = 'Mars' %}
+{% assign card_instrument = 'Debit' %}
+<img src="/gravity-card-02-mars-starter-debit.jpg" alt="Mars Starter debit mock card" width="360" loading="lazy">
+{% when 228660002 %}
+{% assign card_tier = 'Starter' %}
+{% assign card_planet = 'Mercury' %}
+{% assign card_instrument = 'Credit' %}
+<img src="/gravity-card-03-mercury-starter-credit.jpg" alt="Mercury Starter credit mock card" width="360" loading="lazy">
+{% when 228660003 %}
+{% assign card_tier = 'Everyday' %}
+{% assign card_planet = 'Earth' %}
+{% assign card_instrument = 'Debit' %}
+<img src="/gravity-card-04-earth-everyday-debit.jpg" alt="Earth Everyday debit mock card" width="360" loading="lazy">
+{% when 228660004 %}
+{% assign card_tier = 'Everyday' %}
+{% assign card_planet = 'Venus' %}
+{% assign card_instrument = 'Credit' %}
+<img src="/gravity-card-05-venus-everyday-credit.jpg" alt="Venus Everyday credit mock card" width="360" loading="lazy">
+{% when 228660005 %}
+{% assign card_tier = 'Premier' %}
+{% assign card_planet = 'Neptune' %}
+{% assign card_instrument = 'Debit' %}
+<img src="/gravity-card-06-neptune-premier-debit.jpg" alt="Neptune Premier debit mock card" width="360" loading="lazy">
+{% when 228660006 %}
+{% assign card_tier = 'Premier' %}
+{% assign card_planet = 'Uranus' %}
+{% assign card_instrument = 'Credit' %}
+<img src="/gravity-card-07-uranus-premier-credit.jpg" alt="Uranus Premier credit mock card" width="360" loading="lazy">
+{% when 228660007 %}
+{% assign card_tier = 'Wealth' %}
+{% assign card_planet = 'Jupiter' %}
+{% assign card_instrument = 'Debit' %}
+<img src="/gravity-card-08-jupiter-wealth-debit.jpg" alt="Jupiter Wealth debit mock card" width="360" loading="lazy">
+{% when 228660008 %}
+{% assign card_tier = 'Wealth' %}
+{% assign card_planet = 'Saturn' %}
+{% assign card_instrument = 'Credit' %}
+<img src="/gravity-card-09-saturn-wealth-credit.jpg" alt="Saturn Wealth credit mock card" width="360" loading="lazy">
+{% when 228660009 %}
+{% assign card_tier = 'Private' %}
+{% assign card_planet = 'Sun' %}
+{% assign card_instrument = 'Debit' %}
+<img src="/gravity-card-10-sun-private-debit.jpg" alt="Sun Private debit mock card" width="360" loading="lazy">
+{% when 228660010 %}
+{% assign card_tier = 'Private' %}
+{% assign card_planet = 'Sun / Eclipse' %}
+{% assign card_instrument = 'Credit' %}
+<img src="/gravity-card-11-sun-eclipse-private-credit.jpg" alt="Sun / Eclipse Private credit mock card" width="360" loading="lazy">
+{% endcase %}

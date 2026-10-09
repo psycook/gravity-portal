@@ -1,0 +1,39 @@
+{% assign context_kind = 'transaction' %}
+{% include 'Gravity Banking Context' %}
+{% if banking_transaction and banking_account %}
+<section class="dashboard-hero"><div class="shell">
+  <nav class="banking-breadcrumb" aria-label="Breadcrumb"><a href="/my-gravity/">My Gravity</a><span aria-hidden="true">/</span><a href="/account/?id={{ banking_account.id }}">{{ banking_account.rfd_name | escape }}</a><span aria-hidden="true">/</span><span>Transaction</span></nav>
+  <p class="eyebrow eyebrow--cyan">Transaction overview</p><h1>{{ banking_transaction.rfd_description | escape }}</h1>
+  <p class="lede">Understand the activity. Ask a person when something doesn't look right.</p>
+</div></section>
+<section class="shell banking-section banking-detail-grid">
+  <article class="card balance-card">
+    <span class="tag">Synthetic activity</span>
+    <div class="balance-card__amount money {% if banking_transaction.rfd_direction.value == 228660001 %}row-value--credit{% endif %}">{% if banking_transaction.rfd_direction.value == 228660001 %}+{% else %}-{% endif %}&pound;{{ banking_transaction.rfd_amount | format: 'N2' }}</div>
+    <dl class="banking-facts">
+      <div><dt>Direction</dt><dd>{% if banking_transaction.rfd_direction.value == 228660001 %}Credit &middot; money in{% else %}Debit &middot; money out{% endif %}</dd></div>
+      <div><dt>Status</dt><dd>{{ banking_transaction.rfd_transactionstatus.label | escape }}</dd></div>
+      <div><dt>Occurred</dt><dd>{{ banking_transaction.rfd_occurredon | date: 'dd MMM yyyy, HH:mm' }}</dd></div>
+      {% if banking_transaction.rfd_postedon %}<div><dt>Posted</dt><dd>{{ banking_transaction.rfd_postedon | date: 'dd MMM yyyy, HH:mm' }}</dd></div>{% endif %}
+      <div><dt>Type</dt><dd>{{ banking_transaction.rfd_transactiontype.label | escape }}</dd></div>
+      <div><dt>Category</dt><dd>{{ banking_transaction.rfd_category.label | escape }}</dd></div>
+      {% if banking_transaction.rfd_counterpartyname %}<div><dt>Counterparty</dt><dd>{{ banking_transaction.rfd_counterpartyname | escape }}</dd></div>{% endif %}
+      {% if banking_transaction.rfd_paymentreference %}<div><dt>Payment reference</dt><dd>{{ banking_transaction.rfd_paymentreference | escape }}</dd></div>{% endif %}
+      <div><dt>Account</dt><dd><a href="/account/?id={{ banking_account.id }}">{{ banking_account.rfd_name | escape }}</a></dd></div>
+      {% if banking_transaction.rfd_balanceafter != nil %}<div><dt>Balance after</dt><dd class="money">&pound;{{ banking_transaction.rfd_balanceafter | format: 'N2' }}</dd></div>{% endif %}
+    </dl>
+  </article>
+  <aside class="card banking-support">
+    <p class="eyebrow eyebrow--gold">Mission Control</p><h2>Keep a human in your orbit.</h2>
+    <p>Choose the right route. The form keeps this transaction attached, so you don't have to repeat its details.</p>
+    <div class="banking-action-stack">
+      <a class="button" href="/banking-request/?kind=transaction&amp;id={{ banking_transaction.id }}&amp;reason=query">Ask about this transaction</a>
+      <a class="button button--outline" href="/banking-request/?kind=transaction&amp;id={{ banking_transaction.id }}&amp;reason=dispute">Dispute this transaction</a>
+      <a class="button button--outline" href="/banking-request/?kind=transaction&amp;id={{ banking_transaction.id }}&amp;reason=fraud">Report suspected fraud</a>
+    </div>
+    <p class="fine-print">Demonstration only. Sending a request does not freeze a card, reverse a payment or issue a refund. If real money is at risk, contact your actual bank using a trusted number.</p>
+  </aside>
+</section>
+{% else %}
+{% include 'Gravity Banking Gate' %}
+{% endif %}

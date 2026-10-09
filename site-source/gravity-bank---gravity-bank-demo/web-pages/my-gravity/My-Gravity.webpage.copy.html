@@ -1,0 +1,158 @@
+{% if user %}
+{% include 'Gravity Banking Paging' %}
+{% assign account_page = request.params.p | integer | default: 1 %}
+{% if account_page < 1 %}{% assign account_page = 1 %}{% endif %}
+{% fetchxml gravity_accounts %}
+<fetch count="12" page="{{ account_page }}"{% if banking_paging_cookie != '' %} paging-cookie="{{ banking_paging_cookie | xml_escape }}"{% endif %}>
+  <entity name="rfd_financialaccount">
+    <attribute name="rfd_financialaccountid" />
+    <attribute name="rfd_name" />
+    <attribute name="rfd_producttype" />
+    <attribute name="rfd_currentbalance" />
+    <attribute name="rfd_availablebalance" />
+    <attribute name="rfd_cardlastfour" />
+    <attribute name="rfd_lifecyclestatus" />
+    <filter>
+      <condition attribute="rfd_customerid" operator="eq" value="{{ user.id }}" />
+    </filter>
+    <order attribute="rfd_producttype" />
+    <order attribute="rfd_financialaccountid" />
+  </entity>
+</fetch>
+{% endfetchxml %}
+{% fetchxml banking_requests %}
+<fetch count="5" page="1"><entity name="rfd_bankingrequest">
+  <attribute name="rfd_bankingrequestid" /><attribute name="rfd_subject" /><attribute name="rfd_requesttype" />
+  <attribute name="rfd_requeststatus" /><attribute name="rfd_financialaccountid" /><attribute name="rfd_financialtransactionid" />
+  <attribute name="createdon" />
+  <filter><condition attribute="rfd_customerid" operator="eq" value="{{ user.id }}" /></filter>
+  <order attribute="createdon" descending="true" />
+</entity></fetch>
+{% endfetchxml %}
+{% fetchxml gravity_transactions %}
+<fetch count="8" page="1">
+  <entity name="rfd_financialtransaction">
+    <attribute name="rfd_financialtransactionid" />
+    <attribute name="rfd_description" />
+    <attribute name="rfd_amount" />
+    <attribute name="rfd_direction" />
+    <attribute name="rfd_occurredon" />
+    <attribute name="rfd_transactionstatus" />
+    <link-entity name="rfd_financialaccount" from="rfd_financialaccountid" to="rfd_financialaccountid" alias="account">
+      <attribute name="rfd_name" />
+      <filter><condition attribute="rfd_customerid" operator="eq" value="{{ user.id }}" /></filter>
+    </link-entity>
+    <order attribute="rfd_occurredon" descending="true" />
+    <order attribute="rfd_financialtransactionid" />
+  </entity>
+</fetch>
+{% endfetchxml %}
+{% fetchxml gravity_cases %}
+<fetch count="5" page="1">
+  <entity name="incident">
+    <attribute name="incidentid" />
+    <attribute name="ticketnumber" />
+    <attribute name="title" />
+    <attribute name="statuscode" />
+    <attribute name="createdon" />
+    <filter>
+      <condition attribute="customerid" operator="eq" value="{{ user.id }}" />
+      <condition attribute="statecode" operator="eq" value="0" />
+    </filter>
+    <order attribute="createdon" descending="true" />
+  </entity>
+</fetch>
+{% endfetchxml %}
+{% fetchxml gravity_requests %}
+<fetch count="5" page="1">
+  <entity name="rfd_contactrequest">
+    <attribute name="rfd_contactrequestid" />
+    <attribute name="rfd_name" />
+    <attribute name="rfd_subject" />
+    <attribute name="rfd_requeststatus" />
+    <attribute name="createdon" />
+    <filter><condition attribute="rfd_customerid" operator="eq" value="{{ user.id }}" /></filter>
+    <order attribute="createdon" descending="true" />
+  </entity>
+</fetch>
+{% endfetchxml %}
+
+<section class="dashboard-hero"><div class="shell dashboard-hero__top"><div><p class="eyebrow">My Gravity</p><h1>Welcome back, <span class="photon-text">{{ user.firstname | default: user.fullname | escape }}.</span></h1><p class="lede">Your synthetic accounts, activity and support requests in one secure demonstration view.</p></div><a class="button button--outline" href="/Account/Manage/">Manage profile</a></div></section>
+
+<section class="shell dashboard-grid">
+  <div class="dashboard-stack">
+    <article class="card balance-card">
+      <div class="balance-card__header"><p class="muted">Deposit balances on this page</p><span class="tag tag--success">Demonstration</span></div>
+      {% assign total_balance = 0 %}
+      {% for account in gravity_accounts.results.entities %}
+        {% if account.rfd_producttype.value == 228660000 or account.rfd_producttype.value == 100000000 or account.rfd_producttype.value == 100000001 or account.rfd_producttype.value == 100000002 %}
+          {% assign total_balance = total_balance | plus: account.rfd_currentbalance %}
+        {% endif %}
+      {% endfor %}
+      <div class="balance-card__amount money">&pound;{{ total_balance | default: 0 | format: 'N2' }}</div>
+      <p class="fine-print">Current accounts, savings and ISAs on page {{ account_page }} only. Synthetic data; not an all-account total.</p>
+      <div class="balance-card__actions"><a class="button button--small" href="#accounts">View accounts</a><a class="button button--small button--outline" href="/contact-us/">Get support</a></div>
+    </article>
+
+    <article class="card" id="accounts">
+      <p class="eyebrow eyebrow--cyan">Accounts and cards</p><h2>In your orbit</h2>
+      <p class="muted">All your accounts, including closed and inactive accounts. Select one to view its transactions or request help.</p>
+      <div class="account-list">
+        {% for account in gravity_accounts.results.entities %}
+        <a class="account-row banking-row" href="/account/?id={{ account.rfd_financialaccountid }}"><div><div class="row-title">{{ account.rfd_name | escape }}</div><div class="row-meta">{{ account.rfd_producttype.label | default: "Financial account" | escape }} &middot; {{ account.rfd_lifecyclestatus.label | escape }}{% if account.rfd_cardlastfour %} ending {{ account.rfd_cardlastfour | escape }}{% endif %}</div></div><div class="row-value money">{% if account.rfd_currentbalance != nil %}&pound;{{ account.rfd_currentbalance | format: 'N2' }}{% else %}Not available{% endif %}</div></a>
+        {% endfor %}
+        {% if gravity_accounts.results.entities.size == 0 %}<div class="empty-state">Nothing in orbit yet. No permitted financial accounts were returned.</div>{% endif %}
+      </div>
+      <nav class="banking-pagination" aria-label="Account pages">
+        <span class="muted">Page {{ account_page }} &middot; up to 12 accounts</span>
+        {% if account_page > 1 %}<a class="button button--small button--outline" href="/my-gravity/#accounts">Back to first page</a>{% endif %}
+        {% if gravity_accounts.results.more_records %}<a class="button button--small" href="/my-gravity/?p={{ account_page | plus: 1 }}&amp;cookie={{ gravity_accounts.results.paging_cookie | url_encode | url_encode }}#accounts">More accounts</a>{% endif %}
+      </nav>
+    </article>
+
+    <article class="card" id="recent-activity">
+      <p class="eyebrow">Recent activity</p><h2>Transactions</h2>
+      <p class="muted">Your latest eight transactions across all accounts. Open an account for its full history.</p>
+      {% include 'Gravity Transaction Rows' transactions: gravity_transactions.results.entities show_account: true transaction_limit: 8 %}
+    </article>
+
+    <article class="card" id="requests">
+      <p class="eyebrow eyebrow--gold">Support orbit</p><h2>Cases and requests</h2>
+      <div class="case-list">
+        {% for case in gravity_cases.results.entities limit: 5 %}<div class="case-row"><div><div class="row-title">{{ case.title | escape }}</div><div class="row-meta">{{ case.ticketnumber | escape }} · opened {{ case.createdon | date: "dd MMM yyyy" }}</div></div><span class="tag">{{ case.statuscode.label | escape }}</span></div>{% endfor %}
+        {% for request in gravity_requests.results.entities limit: 5 %}<div class="case-row"><div><div class="row-title">{{ request.rfd_subject | escape }}</div><div class="row-meta">{{ request.rfd_name | escape }} · sent {{ request.createdon | date: "dd MMM yyyy" }}</div></div><span class="tag">{{ request.rfd_requeststatus.label | escape }}</span></div>{% endfor %}
+        {% for request in banking_requests.results.entities limit: 5 %}<div class="case-row"><div><div class="row-title">{{ request.rfd_subject | escape }}</div><div class="row-meta">Linked {% if request.rfd_financialtransactionid %}<a href="/transaction/?id={{ request.rfd_financialtransactionid.id }}">transaction</a>{% else %}<a href="/account/?id={{ request.rfd_financialaccountid.id }}">account</a>{% endif %} &middot; sent {{ request.createdon | date: "dd MMM yyyy" }}</div></div><span class="tag">{% case request.rfd_requeststatus.value %}{% when 228660001 %}In progress{% when 228660002 %}Resolved{% when 228660003 %}Cancelled{% else %}New{% endcase %}</span></div>{% endfor %}
+        {% if gravity_cases.results.entities.size == 0 and gravity_requests.results.entities.size == 0 and banking_requests.results.entities.size == 0 %}<div class="empty-state">No open support items. Mission Control is here when you need it.</div>{% endif %}
+      </div>
+      <p class="fine-print">The five latest items from each support list are shown.</p>
+      <div class="button-row"><a class="button button--small" href="/contact-us/">Create a request</a></div>
+    </article>
+  </div>
+
+  <aside class="dashboard-stack dashboard-sidebar" aria-label="Help and quick actions">
+    <article class="card">
+      <p class="eyebrow">Quick actions</p><h2>How can we help?</h2>
+      <nav class="quick-actions" aria-label="Quick actions">
+        <a class="quick-action" href="/contact-us/?type=card"><span class="quick-action__icon" aria-hidden="true">&#9678;</span><span><strong>Card support</strong><small>Ask about a card or freeze</small></span><span class="quick-action__arrow" aria-hidden="true">&#8599;</span></a>
+        <a class="quick-action" href="#recent-activity"><span class="quick-action__icon" aria-hidden="true">&#8644;</span><span><strong>Query a transaction</strong><small>Select from recent activity</small></span><span class="quick-action__arrow" aria-hidden="true">&#8599;</span></a>
+        <a class="quick-action" href="/save/"><span class="quick-action__icon" aria-hidden="true">&#10023;</span><span><strong>Explore savings</strong><small>Find your next goal</small></span><span class="quick-action__arrow" aria-hidden="true">&#8599;</span></a>
+        <a class="quick-action" href="/proof/"><span class="quick-action__icon" aria-hidden="true">&#9675;</span><span><strong>See our working</strong><small>Visit the Proof hub</small></span><span class="quick-action__arrow" aria-hidden="true">&#8599;</span></a>
+      </nav>
+      <p class="fine-print dashboard-sidebar__note">Support requests are simulated. No card controls or payments are changed.</p>
+    </article>
+    <article class="card arc-card">
+      <div class="arc-card__head"><img src="/arc-agent-icon-192.png" alt=""><div><strong>Arc <span class="ai-label">AI</span></strong><div class="row-meta">Your AI money companion</div></div></div>
+      <p class="arc-card__bubble">AI explanations, with a human handover when you need one.</p>
+      <a class="text-link" href="/arc/">Meet Arc</a>
+    </article>
+    <article class="card dashboard-security">
+      <span class="tag tag--success">Gravity Lock</span><h2>Something doesn't look right?</h2>
+      <p>Speak to Mission Control about card security or suspected fraud.</p>
+      <a class="text-link" href="/contact-us/?type=fraud">Get security help</a>
+      <p class="fine-print dashboard-sidebar__note">Real money at risk? Contact your actual bank using a trusted number.</p>
+    </article>
+  </aside>
+</section>
+{% else %}
+<section class="auth-gate"><div class="shell"><div class="card auth-gate__card"><img src="/gravity-symbol-colour-glow.png" alt=""><p class="eyebrow">My Gravity</p><h1>Welcome back to the singularity.</h1><p class="lede">Sign in to see the synthetic accounts, transactions, cases and contact requests linked to your Dataverse Contact.</p><div class="button-row" style="justify-content:center"><a class="button" href="/SignIn?returnUrl=%2Fmy-gravity%2F">Sign in</a><a class="button button--outline" href="/">Back to Gravity</a></div></div></div></section>
+{% endif %}

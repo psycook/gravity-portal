@@ -1,0 +1,13 @@
+adx_append: true
+adx_appendto: true
+adx_contactrelationship: contact_rfd_contactrequest_rfd_CustomerId
+adx_create: true
+adx_delete: false
+adx_entitylogicalname: rfd_contactrequest
+adx_entityname: Gravity - Contact Requests - Customer
+adx_entitypermission_webrole:
+- fb6c7532-85c2-f111-a05c-6045bd015270
+adx_entitypermissionid: 15db1aa1-91c2-f111-a05c-70a8a5b10a05
+adx_read: true
+adx_scope: 756150001
+adx_write: false

@@ -1,0 +1,53 @@
+{
+  "permissions": [
+    {
+      "name": "Gravity - Contact - Self",
+      "table": "contact",
+      "scope": "Self",
+      "privileges": ["Read", "Append", "AppendTo"],
+      "webRoles": ["Authenticated Users"]
+    },
+    {
+      "name": "Gravity - Financial Accounts - Customer",
+      "table": "rfd_financialaccount",
+      "scope": "Contact",
+      "relationship": "rfd_contact_financialaccounts",
+      "privileges": ["Read", "Append", "AppendTo"],
+      "webRoles": ["Authenticated Users"]
+    },
+    {
+      "name": "Gravity - Transactions - Parent Account",
+      "table": "rfd_financialtransaction",
+      "scope": "Parent",
+      "parentPermission": "Gravity - Financial Accounts - Customer",
+      "relationship": "rfd_FinancialAccount_FinancialTransactions",
+      "privileges": ["Read", "Append", "AppendTo"],
+      "webRoles": ["Authenticated Users"]
+    },
+    {
+      "name": "Gravity - Cases - Customer",
+      "table": "incident",
+      "scope": "Contact",
+      "relationship": "incident_customer_contacts",
+      "privileges": ["Read"],
+      "webRoles": ["Authenticated Users"]
+    },
+    {
+      "name": "Gravity - Contact Requests - Customer",
+      "table": "rfd_contactrequest",
+      "scope": "Contact",
+      "relationship": "contact_rfd_contactrequest_rfd_CustomerId",
+      "privileges": ["Create", "Read", "Append", "AppendTo"],
+      "webRoles": ["Authenticated Users"]
+    },
+    {
+      "name": "Gravity - Banking Requests - Customer",
+      "table": "rfd_bankingrequest",
+      "scope": "Contact",
+      "relationship": "contact_rfd_bankingrequest_rfd_CustomerId",
+      "privileges": ["Create", "Read", "Append", "AppendTo"],
+      "webRoles": ["Authenticated Users"]
+    }
+  ],
+  "note": "Verified Standard-model live relationship names. Financial rows remain read-only; AppendTo permits linking owned records, not editing them. Contact Self scope prevents binding another customer. No anonymous role receives these permissions."
+}

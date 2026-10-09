@@ -1,0 +1,9 @@
+{
+  "Webapi/rfd_contactrequest/enabled": "true",
+  "Webapi/rfd_contactrequest/fields": "rfd_name,rfd_subject,rfd_details,rfd_requesttype,rfd_preferredchannel,rfd_preferredcontactvalue,rfd_preferredcontacttime,rfd_urgency,rfd_consenttocontact,rfd_source,rfd_issimulated,rfd_customerid,rfd_CustomerId",
+  "Webapi/rfd_bankingrequest/enabled": "true",
+  "Webapi/rfd_bankingrequest/fields": "rfd_name,rfd_subject,rfd_details,rfd_requesttype,rfd_customerid,rfd_financialaccountid,rfd_financialtransactionid,rfd_issimulated,rfd_CustomerId,rfd_FinancialAccountId,rfd_FinancialTransactionId",
+  "Authentication/Registration/Enabled": "true",
+  "Authentication/Registration/OpenRegistrationEnabled": "false",
+  "Authentication/Registration/InvitationEnabled": "true"
+}

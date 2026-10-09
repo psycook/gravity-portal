@@ -1,0 +1,11 @@
+<customapiresponseproperty uniquename="ResponseJson">
+  <description default="ResponseJson">
+    <label description="ResponseJson" languagecode="1033" />
+  </description>
+  <displayname default="ResponseJson">
+    <label description="ResponseJson" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <name>rfd_UpdateEmailProcessStep.ResponseJson</name>
+  <type>10</type>
+</customapiresponseproperty>

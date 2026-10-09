@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="SourceExecutionId">
+  <description default="Optional first native intake run provenance; trimmed nonempty text without control characters, maximum 200 characters. Excluded from ingest identity and payload digest; redelivery cannot overwrite first accepted provenance.">
+    <label description="Optional first native intake run provenance; trimmed nonempty text without control characters, maximum 200 characters. Excluded from ingest identity and payload digest; redelivery cannot overwrite first accepted provenance." languagecode="1033" />
+  </description>
+  <displayname default="SourceExecutionId">
+    <label description="SourceExecutionId" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <isoptional>1</isoptional>
+  <name>rfd_StartEmailProcess.SourceExecutionId</name>
+  <type>10</type>
+</customapirequestparameter>

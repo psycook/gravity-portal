@@ -1,0 +1,16 @@
+<div class="transaction-list">
+{% assign transaction_row_limit = transaction_limit | default: transactions.size %}
+{% for transaction in transactions limit: transaction_row_limit %}
+  <a class="transaction-row banking-row" href="/transaction/?id={{ transaction.rfd_financialtransactionid }}">
+    <span class="row-icon" aria-hidden="true">{% if transaction.rfd_direction.value == 228660001 %}&#8601;{% else %}&#8599;{% endif %}</span>
+    <div><div class="row-title">{{ transaction.rfd_description | escape }}</div>
+      <div class="row-meta">{{ transaction.rfd_occurredon | date: 'dd MMM yyyy' }} &middot; {{ transaction.rfd_transactionstatus.label | escape }}{% if show_account %} &middot; {{ transaction['account.rfd_name'] | escape }}{% endif %}</div>
+    </div>
+    <div class="row-value money {% if transaction.rfd_direction.value == 228660001 %}row-value--credit{% endif %}">
+      <span class="sr-only">{% if transaction.rfd_direction.value == 228660001 %}Credit{% else %}Debit{% endif %} </span>
+      {% if transaction.rfd_direction.value == 228660001 %}+{% else %}-{% endif %}&pound;{{ transaction.rfd_amount | format: 'N2' }}
+    </div>
+  </a>
+{% endfor %}
+{% if transactions.size == 0 %}<div class="empty-state">No transactions on this page.</div>{% endif %}
+</div>

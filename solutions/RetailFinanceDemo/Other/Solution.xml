@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml version="9.2.26094.133" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26094.133" OrganizationSchemaType="Full" CRMServerServiceabilityVersion="9.2.26094.00138">
+  <SolutionManifest>
+    <UniqueName>RetailFinanceDemo</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="RetailFinanceDemo" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions />
+    <Version>1.0.0.0</Version>
+    <Managed>0</Managed>
+    <Publisher>
+      <UniqueName>RetailFinanceDemo</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="Retail Finance Demo" languagecode="1033" />
+      </LocalizedNames>
+      <Descriptions>
+        <Description description="Publisher for the synthetic retail finance customer demo." languagecode="1033" />
+      </Descriptions>
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <CustomizationPrefix>rfd</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>22866</CustomizationOptionValuePrefix>
+      <Addresses>
+        <Address>
+          <AddressNumber>1</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+        <Address>
+          <AddressNumber>2</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+      </Addresses>
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="1" schemaName="account" behavior="1" />
+      <RootComponent type="1" schemaName="contact" behavior="1" />
+      <RootComponent type="1" schemaName="email" behavior="1" />
+      <RootComponent type="1" schemaName="incident" behavior="1" />
+      <RootComponent type="1" schemaName="product" behavior="1" />
+      <RootComponent type="1" schemaName="rfd_bankingrequest" behavior="1" />
+      <RootComponent type="1" schemaName="rfd_contactrequest" behavior="1" />
+      <RootComponent type="1" schemaName="rfd_emailprocess" behavior="0" />
+      <RootComponent type="1" schemaName="rfd_emailprocessstep" behavior="0" />
+      <RootComponent type="1" schemaName="rfd_financialaccount" behavior="0" />
+      <RootComponent type="1" schemaName="rfd_financialtransaction" behavior="0" />
+      <RootComponent type="1" schemaName="systemuser" behavior="1" />
+      <RootComponent type="1" schemaName="task" behavior="1" />
+      <RootComponent type="1" schemaName="workflow" behavior="1" />
+      <RootComponent type="91" id="{ab2bcb99-a0c0-f111-a05c-70a8a5b2ff44}" schemaName="GravityBank.ProcessTracking, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" behavior="0" />
+      <RootComponent type="92" id="{184a51e4-a3d5-54fd-8466-7c96d6f6297f}" behavior="0" />
+      <RootComponent type="92" id="{265c8e63-4064-5a95-89b2-39e140abb7d2}" behavior="0" />
+      <RootComponent type="92" id="{4466b4f3-541a-5c10-beb1-4ecbc4d1ba77}" behavior="0" />
+      <RootComponent type="92" id="{4a536d12-a731-53db-94f3-f1fc0f4a6fe9}" behavior="0" />
+      <RootComponent type="92" id="{58d4d224-a478-5c08-b0fe-d03de5aaa2df}" behavior="0" />
+      <RootComponent type="92" id="{7faf6e28-7842-5246-9c90-7214f26abcf2}" behavior="0" />
+      <RootComponent type="92" id="{9c6c75c3-738c-57d5-9b3f-92aa4bd5e1c2}" behavior="0" />
+      <RootComponent type="92" id="{9cea1be4-0d3f-51e5-8698-cb673249bed3}" behavior="0" />
+      <RootComponent type="92" id="{a0f8457c-91e7-5f71-9dcf-04f701deb8a3}" behavior="0" />
+      <RootComponent type="92" id="{a59c9b24-5faf-5251-a00b-a5931229dbe8}" behavior="0" />
+      <RootComponent type="92" id="{c0476be8-d43f-54c1-a033-1ff777683fbd}" behavior="0" />
+      <RootComponent type="92" id="{d6b2ecae-85af-5acd-9880-6f353e1d713a}" behavior="0" />
+      <RootComponent type="92" id="{dce8b800-0b0a-5f84-a4a2-c4db9c0c6934}" behavior="0" />
+      <RootComponent type="92" id="{e0197ab0-b102-5885-abed-cf226f656ee5}" behavior="0" />
+      <RootComponent type="92" id="{fc02b258-1049-5d19-a726-44a3bfa7687b}" behavior="0" />
+    </RootComponents>
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="email" displayName="Email" parentSchemaName="" solution="msdyn_SalesLeadResearch (9.1.26092.10008)" />
+        <Dependent type="1" schemaName="email" displayName="Email" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package appName="msdynce_Service" version="9.0.26094.1008">msdynce_ServiceAnchor (9.0.26094.1008)</package>
+        </Required>
+        <Dependent type="1" schemaName="incident" displayName="Case" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package appName="msdynce_Service" version="9.0.26094.1008">msdynce_ServiceAnchor (9.0.26094.1008)</package>
+        </Required>
+        <Dependent type="2" schemaName="rfd_financialaccountid" displayName="Financial Account" parentSchemaName="incident" parentDisplayName="Case" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package appName="msdynce_Service" version="9.0.26094.1008">msdynce_ServiceAnchor (9.0.26094.1008)</package>
+        </Required>
+        <Dependent type="92" displayName="Simplified process tracking; calling-user execution." id="{4466b4f3-541a-5c10-beb1-4ecbc4d1ba77}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="product" displayName="Product" solution="msdynce_ProductManagement (9.0.4.0066)">
+          <package appName="msdynce_ProductManagement" version="9.0.26071.10001">msdynce_ProductManagementAnchor (9.0.26071.10001)</package>
+        </Required>
+        <Dependent type="1" schemaName="product" displayName="Product" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="rfd_bankingrequest" displayName="Banking Request" solution="Active" />
+        <Dependent type="1" schemaName="rfd_bankingrequest" displayName="Banking Request" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="rfd_contactrequest" displayName="Contact Request" solution="Active" />
+        <Dependent type="1" schemaName="rfd_contactrequest" displayName="Contact Request" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="systemuser" displayName="SystemUser" parentSchemaName="" solution="msdyn_InsightsAnalyticsCSHistoricalAnalytics (9.0.25104.1008)" />
+        <Dependent type="1" schemaName="systemuser" displayName="SystemUser" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="task" displayName="Task" parentSchemaName="" solution="msdynce_ServicePatch201911 (9.0.26094.1008)" />
+        <Dependent type="1" schemaName="task" displayName="Task" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="workflow" displayName="Workflow" parentSchemaName="" solution="msdyn_Macros (9.2.26092.1002)" />
+        <Dependent type="1" schemaName="workflow" displayName="Workflow" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="customerid" displayName="Customer" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package appName="msdynce_Service" version="9.0.26094.1008">msdynce_ServiceAnchor (9.0.26094.1008)</package>
+        </Required>
+        <Dependent type="92" displayName="Simplified process tracking; calling-user execution." id="{4466b4f3-541a-5c10-beb1-4ecbc4d1ba77}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="merged" displayName="Internal Use Only" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package appName="msdynce_Service" version="9.0.26094.1008">msdynce_ServiceAnchor (9.0.26094.1008)</package>
+        </Required>
+        <Dependent type="92" displayName="Simplified process tracking; calling-user execution." id="{4466b4f3-541a-5c10-beb1-4ecbc4d1ba77}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="name" displayName="Name" parentSchemaName="product" parentDisplayName="Product" solution="msdynce_ProductManagement (9.0.4.0066)">
+          <package appName="msdynce_ProductManagement" version="9.0.26071.10001">msdynce_ProductManagementAnchor (9.0.26071.10001)</package>
+        </Required>
+        <Dependent type="10" schemaName="rfd_product_financialaccounts" displayName="rfd_product_financialaccounts" parentSchemaName="product" parentDisplayName="Product" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package appName="msdynce_Service" version="9.0.26094.1008">msdynce_ServiceAnchor (9.0.26094.1008)</package>
+        </Required>
+        <Dependent type="92" displayName="Simplified process tracking; calling-user execution." id="{4466b4f3-541a-5c10-beb1-4ecbc4d1ba77}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package appName="msdynce_Service" version="9.0.26094.1008">msdynce_ServiceAnchor (9.0.26094.1008)</package>
+        </Required>
+        <Dependent type="92" displayName="Simplified process tracking; calling-user execution." id="{4466b4f3-541a-5c10-beb1-4ecbc4d1ba77}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="title" displayName="Case Title" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package appName="msdynce_Service" version="9.0.26094.1008">msdynce_ServiceAnchor (9.0.26094.1008)</package>
+        </Required>
+        <Dependent type="10" schemaName="rfd_emailprocess_primarycase" displayName="rfd_emailprocess_primarycase" parentSchemaName="incident" parentDisplayName="Case" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="title" displayName="Case Title" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package appName="msdynce_Service" version="9.0.26094.1008">msdynce_ServiceAnchor (9.0.26094.1008)</package>
+        </Required>
+        <Dependent type="10" schemaName="rfd_emailprocessstep_case" displayName="rfd_emailprocessstep_case" parentSchemaName="incident" parentDisplayName="Case" />
+      </MissingDependency>
+    </MissingDependencies>
+  </SolutionManifest>
+</ImportExportXml>

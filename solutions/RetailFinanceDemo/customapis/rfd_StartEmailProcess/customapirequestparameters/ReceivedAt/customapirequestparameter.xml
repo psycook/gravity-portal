@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="ReceivedAt">
+  <description default="ReceivedAt">
+    <label description="ReceivedAt" languagecode="1033" />
+  </description>
+  <displayname default="ReceivedAt">
+    <label description="ReceivedAt" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <isoptional>0</isoptional>
+  <name>rfd_StartEmailProcess.ReceivedAt</name>
+  <type>1</type>
+</customapirequestparameter>

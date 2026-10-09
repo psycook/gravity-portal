@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="CaseId">
+  <description default="CaseId">
+    <label description="CaseId" languagecode="1033" />
+  </description>
+  <displayname default="CaseId">
+    <label description="CaseId" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <isoptional>1</isoptional>
+  <name>rfd_UpdateEmailProcessStep.CaseId</name>
+  <type>12</type>
+</customapirequestparameter>

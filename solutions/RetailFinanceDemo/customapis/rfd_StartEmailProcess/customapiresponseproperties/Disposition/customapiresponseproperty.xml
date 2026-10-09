@@ -1,0 +1,11 @@
+<customapiresponseproperty uniquename="Disposition">
+  <description default="Disposition">
+    <label description="Disposition" languagecode="1033" />
+  </description>
+  <displayname default="Disposition">
+    <label description="Disposition" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <name>rfd_StartEmailProcess.Disposition</name>
+  <type>10</type>
+</customapiresponseproperty>

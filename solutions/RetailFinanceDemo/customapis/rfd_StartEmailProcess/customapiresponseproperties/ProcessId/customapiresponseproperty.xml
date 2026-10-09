@@ -1,0 +1,11 @@
+<customapiresponseproperty uniquename="ProcessId">
+  <description default="ProcessId">
+    <label description="ProcessId" languagecode="1033" />
+  </description>
+  <displayname default="ProcessId">
+    <label description="ProcessId" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <name>rfd_StartEmailProcess.ProcessId</name>
+  <type>12</type>
+</customapiresponseproperty>

@@ -1,0 +1,16 @@
+{% if user %}
+<section class="auth-gate"><div class="shell"><div class="card auth-gate__card">
+  <p class="eyebrow">Your secure orbit</p><h1>We can't find that item.</h1>
+  <p class="lede">The link may be incomplete, or the item is not available to your signed-in profile. No account or transaction information has been shared.</p>
+  <div class="button-row"><a class="button" href="/my-gravity/">Back to My Gravity</a></div>
+</div></div></section>
+{% else %}
+{% assign allowed_reasons = 'request,complaint,query,dispute,fraud' | split: ',' %}
+{% capture return_path %}{{ request.path }}{% if valid_context_id %}?id={{ context_id }}{% if context_kind %}&kind={{ context_kind }}{% endif %}{% if allowed_reasons contains request.params.reason %}&reason={{ request.params.reason }}{% endif %}{% endif %}{% endcapture %}
+<section class="auth-gate"><div class="shell"><div class="card auth-gate__card">
+  <img src="/gravity-symbol-colour-glow.png" alt="">
+  <p class="eyebrow">My Gravity</p><h1>Your orbit is private.</h1>
+  <p class="lede">Sign in to view your synthetic account activity and send a linked request to Mission Control.</p>
+  <div class="button-row"><a class="button" href="/SignIn?returnUrl={{ return_path | url_encode }}">Sign in</a><a class="button button--outline" href="/">Back to Gravity</a></div>
+</div></div></section>
+{% endif %}

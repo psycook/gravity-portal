@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="SourceExecutionId">
+  <description default="Required stable native execution identity for workflow updates.">
+    <label description="Required stable native execution identity for workflow updates." languagecode="1033" />
+  </description>
+  <displayname default="SourceExecutionId">
+    <label description="SourceExecutionId" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <isoptional>1</isoptional>
+  <name>rfd_UpdateEmailProcessStep.SourceExecutionId</name>
+  <type>10</type>
+</customapirequestparameter>

@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="{{ website.selected_language.code | default: 'en-GB' }}" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#05060B">
+  <meta name="color-scheme" content="dark">
+  <title>{% if page.title %}{{ page.title | escape }} | {% endif %}Gravity</title>
+  <meta name="description" content="{{ page.description | default: 'Gravity is a fictional UK bank demonstration. Your money, your orbit.' | escape }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="/gravity-favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Lexend+Exa:wght@400;500&amp;family=Lexend:wght@300;400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="/gravity.css">
+  
+</head>
+<body class="gravity-page" data-page="{{ page.adx_partialurl | escape }}">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="demo-banner" role="note">
+    <span class="demo-banner__dot" aria-hidden="true"></span>
+    Gravity is a fictional demonstration bank. All people, balances and activity are synthetic.
+  </div>
+  <header class="site-header" data-site-header>
+  <div class="shell site-header__inner">
+    <a class="brand" href="/" aria-label="Gravity home">
+      <img src="/gravity-lockup-horizontal-on-dark.png" alt="Gravity">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-nav-toggle>
+      <span></span><span></span><span></span>
+      <span class="sr-only">Open navigation</span>
+    </button>
+    <nav class="primary-nav" id="primary-navigation" aria-label="Primary" data-nav>
+      <a href="/everyday/">Everyday</a>
+      <a href="/save/">Save</a>
+      <a href="/home-buying/">Home</a>
+      <a href="/borrow/">Borrow</a>
+      <a href="/solar-system/">Solar System</a>
+      <a href="/proof/">Proof</a>
+    </nav>
+    <div class="site-header__actions">
+      <a class="header-help" href="/support/">Help</a>
+      {% if user %}
+        <a class="button button--small button--outline" href="/my-gravity/">My Gravity</a>
+        <a class="avatar-link" href="/Account/Manage/" aria-label="Manage profile for {{ user.fullname | escape }}">
+          {{ user.firstname | default: user.fullname | slice: 0 | upcase }}
+        </a>
+      {% else %}
+        <a class="button button--small button--outline" href="/SignIn?returnUrl=%2Fmy-gravity%2F">Sign in</a>
+      {% endif %}
+    </div>
+  </div>
+</header>
+
+  <main id="main" tabindex="-1"{% if page.adx_partialurl == 'my-gravity' or page.adx_partialurl == 'account' or page.adx_partialurl == 'transaction' or page.adx_partialurl == 'banking-request' %} class="banking-main"{% endif %}>
+    {% include 'Page Copy' %}
+  </main>
+  {% unless page.adx_partialurl == 'account' or page.adx_partialurl == 'transaction' or page.adx_partialurl == 'banking-request' or page.adx_partialurl == 'my-gravity' or page.adx_partialurl == 'contact-us' %}
+<aside class="arc-dock" aria-label="Arc AI demonstration">
+  <a href="/arc/" class="arc-dock__link">
+    <img src="/arc-agent-icon-192.png" alt="">
+    <span><strong>Ask Arc</strong><small>AI money companion</small></span>
+  </a>
+</aside>
+{% endunless %}
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div class="footer-brand">
+      <img src="/gravity-lockup-horizontal-on-dark.png" alt="Gravity">
+      <p>Your money, your orbit.</p>
+      <p class="fine-print">A fictional Power Pages demonstration. No real accounts, payments, lending decisions or financial advice.</p>
+    </div>
+    <div>
+      <h2>Explore</h2>
+      <a href="/everyday/">Everyday banking</a>
+      <a href="/save/">Savings</a>
+      <a href="/home-buying/">Home buying</a>
+      <a href="/borrow/">Borrowing</a>
+    </div>
+    <div>
+      <h2>Together</h2>
+      <a href="/solar-system/">Solar System</a>
+      <a href="/switch/">Switch to Gravity</a>
+      <a href="/arc/">Meet Arc</a>
+      <a href="/support/">Mission Control</a>
+    </div>
+    <div>
+      <h2>Clear and candid</h2>
+      <a href="/proof/">Proof hub</a>
+      <a href="/proof/#ai-register">AI register</a>
+      <a href="/contact-us/">Contact us</a>
+      {% if user %}<a href="/my-gravity/">My Gravity</a>{% endif %}
+    </div>
+  </div>
+  <div class="shell footer-legal">
+    <span>&copy; {{ now | date: 'yyyy' }} Gravity demonstration bank</span>
+    <span>Built for synthetic-data demonstration only</span>
+  </div>
+</footer>
+
+  <script>
+(function () {
+  "use strict";
+
+  var navToggle = document.querySelector("[data-nav-toggle]");
+  var nav = document.querySelector("[data-nav]");
+
+  if (navToggle && nav) {
+    navToggle.addEventListener("click", function () {
+      var open = navToggle.getAttribute("aria-expanded") === "true";
+      navToggle.setAttribute("aria-expanded", String(!open));
+      nav.classList.toggle("is-open", !open);
+    });
+  }
+
+  var currentPath = window.location.pathname.toLowerCase();
+  document.querySelectorAll(".primary-nav a").forEach(function (link) {
+    var linkPath = new URL(link.href, window.location.origin).pathname.toLowerCase();
+    if (linkPath !== "/" && currentPath.indexOf(linkPath) === 0) {
+      link.setAttribute("aria-current", "page");
+    }
+  });
+
+  document.querySelectorAll("[data-contact-form]").forEach(function (form) {
+    form.addEventListener("submit", submitContactRequest);
+  });
+  document.querySelectorAll("[data-banking-form]").forEach(function (form) {
+    form.addEventListener("submit", submitBankingRequest);
+  });
+
+  function submitBankingRequest(event) {
+    event.preventDefault();
+    var form = event.currentTarget;
+    if (form.getAttribute("aria-busy") === "true" || form.getAttribute("data-sent") === "true") return;
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    var submit = form.querySelector("[type=submit]");
+    var status = form.querySelector("[data-form-status]");
+    var data = new FormData(form);
+    var kind = form.getAttribute("data-context-kind");
+    var contextId = form.getAttribute("data-context-id");
+    var contactId = form.getAttribute("data-contact-id");
+    var type = Number(data.get("requestType"));
+    var validTypes = kind === "account" ? [228660000, 228660001] : [228660002, 228660003, 228660004];
+    var guid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    if (!guid.test(contextId) || !guid.test(contactId) || ["account", "transaction"].indexOf(kind) < 0 || validTypes.indexOf(type) < 0) {
+      showFormStatus(status, "error", "This request link is incomplete. Return to your account or transaction and open a new request.");
+      return;
+    }
+    var subject = clean(data.get("subject"));
+    var details = clean(data.get("details"));
+    if (!subject || !details) {
+      showFormStatus(status, "error", "Enter a subject and details before sending.");
+      return;
+    }
+    var payload = {
+      rfd_name: subject,
+      rfd_subject: subject,
+      rfd_details: details,
+      rfd_requesttype: type,
+      rfd_issimulated: true
+    };
+    payload["rfd_CustomerId@odata.bind"] = "/contacts(" + contactId + ")";
+    if (kind === "account") {
+      payload["rfd_FinancialAccountId@odata.bind"] = "/rfd_financialaccounts(" + contextId + ")";
+    } else {
+      payload["rfd_FinancialTransactionId@odata.bind"] = "/rfd_financialtransactions(" + contextId + ")";
+    }
+    form.setAttribute("aria-busy", "true");
+    submit.disabled = true;
+    submit.textContent = "Saving request...";
+    safeAjax({
+      type: "POST",
+      url: "/_api/rfd_bankingrequests",
+      contentType: "application/json",
+      data: JSON.stringify(payload),
+      success: function (_response, _text, xhr) {
+        form.setAttribute("data-sent", "true");
+        var entityId = xhr.getResponseHeader("entityid");
+        showFormStatus(status, "success", "Your demonstration request is saved for human review." +
+          (entityId ? " Reference: " + shortReference(entityId) + "." : " The response did not include a reference; check My Gravity before sending again.") +
+          " No card has been frozen, payment reversed or refund issued.");
+      },
+      error: function (xhr) {
+        if (xhr.stage === "token") {
+          showFormStatus(status, "error", "Your request was not sent because a secure form token could not be obtained. Refresh the page and check your sign-in before trying again.");
+          return;
+        }
+        var uncertain = !xhr.status || xhr.status >= 500;
+        showFormStatus(status, "error", uncertain ?
+          "We could not confirm whether your request was saved. Check My Gravity before trying again to avoid a duplicate." :
+          "Your request was not accepted. Check your sign-in and account link, then try again. Error " + xhr.status + ".");
+      },
+      complete: function () {
+        form.setAttribute("aria-busy", "false");
+        submit.disabled = form.getAttribute("data-sent") === "true";
+        submit.textContent = submit.disabled ? "Request saved" : "Send to Mission Control";
+      }
+    });
+  }
+
+  function showFormStatus(element, state, message) {
+    element.className = "form-status form-status--" + state + " is-visible";
+    element.textContent = message;
+    element.focus();
+  }
+
+  function submitContactRequest(event) {
+    event.preventDefault();
+    var form = event.currentTarget;
+    var submit = form.querySelector("[type=submit]");
+    var status = form.querySelector("[data-form-status]");
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    var data = new FormData(form);
+    var contactId = form.getAttribute("data-contact-id");
+
+    status.className = "form-status";
+    status.textContent = "";
+    submit.disabled = true;
+    submit.textContent = "Sending request...";
+
+    var payload = {
+      rfd_name: clean(data.get("subject")),
+      rfd_subject: clean(data.get("subject")),
+      rfd_details: clean(data.get("details")),
+      rfd_requesttype: Number(data.get("requestType")),
+      rfd_preferredchannel: Number(data.get("preferredChannel")),
+      rfd_preferredcontactvalue: clean(data.get("contactValue")),
+      rfd_preferredcontacttime: Number(data.get("preferredTime")),
+      rfd_urgency: Number(data.get("urgency")),
+      rfd_consenttocontact: data.get("consent") === "on",
+      rfd_source: 228660000,
+      rfd_issimulated: true
+    };
+
+    if (contactId) {
+      payload["rfd_CustomerId@odata.bind"] = "/contacts(" + contactId.replace(/[{}]/g, "") + ")";
+    }
+
+    safeAjax({
+      type: "POST",
+      url: "/_api/rfd_contactrequests",
+      contentType: "application/json",
+      data: JSON.stringify(payload),
+      success: function (_data, _status, xhr) {
+        var entityId = xhr.getResponseHeader("entityid");
+        status.className = "form-status form-status--success is-visible";
+        status.textContent = "Your demonstration request has been saved for Mission Control to review. No automatic response or real banking action has been started. Reference: " + shortReference(entityId);
+        form.reset();
+        status.focus();
+      },
+      error: function (xhr) {
+        var message = "We lost signal for a moment. Your request was not sent. Please try again.";
+        try {
+          var response = JSON.parse(xhr.responseText);
+          if (response && response.error && response.error.message) {
+            message += " " + response.error.message;
+          }
+        } catch (_error) {
+          // Keep the clear customer-safe error above.
+        }
+        status.className = "form-status form-status--error is-visible";
+        status.textContent = message;
+        status.focus();
+      },
+      complete: function () {
+        submit.disabled = false;
+        submit.textContent = "Send to Mission Control";
+      }
+    });
+  }
+
+  function safeAjax(options) {
+    var stage = "token";
+    fetch("/_layout/tokenhtml", {credentials: "same-origin", cache: "no-store"}).then(function (response) {
+      if (!response.ok) throw new Error("Secure form token unavailable.");
+      return response.text();
+    }).then(function (html) {
+      var document = new DOMParser().parseFromString(html, "text/html");
+      var input = document.querySelector("input[name=__RequestVerificationToken]");
+      if (!input || !input.value) throw new Error("Secure form token was not returned by Power Pages.");
+      stage = "request";
+      var headers = Object.assign({}, options.headers, {
+        "Content-Type": options.contentType,
+        "Accept": "application/json",
+        "__RequestVerificationToken": input.value
+      });
+      return fetch(options.url, {
+        method: options.type, headers: headers, body: options.data,
+        credentials: "same-origin", redirect: "error"
+      });
+    }).then(function (response) {
+      if (!response.ok) {
+        return response.text().then(function (body) {
+          if (options.error) options.error({status: response.status, responseText: body, stage: stage});
+        });
+      }
+      if (options.success) options.success(null, "success", {
+        getResponseHeader: function (name) { return response.headers.get(name); }
+      });
+    }).catch(function (error) {
+      if (options.error) options.error({
+        status: 0, stage: stage,
+        responseText: JSON.stringify({error: {message: error.message}})
+      });
+    }).finally(function () {
+      if (options.complete) options.complete();
+    });
+  }
+
+  function clean(value) {
+    return String(value || "").trim();
+  }
+
+  function shortReference(entityId) {
+    if (!entityId) return "pending";
+    return entityId.replace(/[{}-]/g, "").slice(0, 10).toUpperCase();
+  }
+})();
+
+</script>
+  
+</body>
+</html>

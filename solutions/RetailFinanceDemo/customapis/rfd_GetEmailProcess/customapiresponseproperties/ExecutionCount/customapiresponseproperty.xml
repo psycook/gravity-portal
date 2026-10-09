@@ -1,0 +1,11 @@
+<customapiresponseproperty uniquename="ExecutionCount">
+  <description default="ExecutionCount">
+    <label description="ExecutionCount" languagecode="1033" />
+  </description>
+  <displayname default="ExecutionCount">
+    <label description="ExecutionCount" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <name>rfd_GetEmailProcess.ExecutionCount</name>
+  <type>7</type>
+</customapiresponseproperty>

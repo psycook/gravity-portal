@@ -1,0 +1,44 @@
+{% assign context_kind = request.params.kind %}
+{% include 'Gravity Banking Context' %}
+{% if banking_account %}
+<section class="dashboard-hero"><div class="shell">
+  <nav class="banking-breadcrumb" aria-label="Breadcrumb"><a href="/my-gravity/">My Gravity</a><span aria-hidden="true">/</span><a href="/account/?id={{ banking_account.id }}">{{ banking_account.rfd_name | escape }}</a>{% if banking_transaction %}<span aria-hidden="true">/</span><a href="/transaction/?id={{ banking_transaction.id }}">Transaction</a>{% endif %}</nav>
+  <p class="eyebrow eyebrow--cyan">Human support, with context</p><h1>Tell Mission Control.</h1>
+  <p class="lede">Your {% if banking_transaction %}transaction{% else %}account{% endif %} is already linked. Tell us what you need; this saves a synthetic request in Dataverse.</p>
+</div></section>
+<section class="shell banking-section form-shell">
+  <form class="gravity-form card" data-banking-form data-contact-id="{{ user.id }}" data-context-kind="{{ context_kind | escape }}" data-context-id="{{ context_id }}">
+    <div class="banking-context"><span class="tag">Linked context</span><strong>{{ banking_account.rfd_name | escape }}</strong>
+      {% if banking_transaction %}<p>{{ banking_transaction.rfd_description | escape }} &middot; {{ banking_transaction.rfd_occurredon | date: 'dd MMM yyyy' }} &middot; &pound;{{ banking_transaction.rfd_amount | format: 'N2' }}</p>{% elsif banking_is_card %}<p>{% if banking_account.rfd_cardlastfour %}Card ending {{ banking_account.rfd_cardlastfour | escape }}{% else %}Selected card account linked{% endif %}</p>{% else %}<p>Account reference {{ banking_account.rfd_holdingnumber | escape }}</p>{% endif %}
+    </div>
+    <div class="field"><label for="bankingRequestType">What do you need?</label>
+      <select id="bankingRequestType" name="requestType" required>
+      {% if banking_transaction %}
+        <option value="228660002"{% if request.params.reason == 'query' %} selected{% endif %}>Transaction query</option>
+        <option value="228660003"{% if request.params.reason == 'dispute' %} selected{% endif %}>Transaction dispute</option>
+        <option value="228660004"{% if request.params.reason == 'fraud' %} selected{% endif %}>Suspected fraud</option>
+      {% else %}
+        <option value="228660000">Account request or question</option>
+        <option value="228660001"{% if request.params.reason == 'complaint' %} selected{% endif %}>Account complaint</option>
+      {% endif %}
+      </select>
+    </div>
+    <div class="field"><label for="bankingSubject">Subject</label><input id="bankingSubject" name="subject" maxlength="150" required></div>
+    <div class="field"><label for="bankingDetails">What happened, and how can we help?</label><textarea id="bankingDetails" name="details" maxlength="2000" required aria-describedby="banking-details-help"></textarea>
+      <small id="banking-details-help">Use synthetic information only. Never include PINs, passwords, one-time passcodes or full card numbers.</small>
+    </div>
+    <label class="checkbox"><input type="checkbox" name="consent" required><span>I understand this creates a demonstration support record only, not a real banking action or emergency response.</span></label>
+    <div class="form-status" data-form-status role="status" aria-live="polite" tabindex="-1"></div>
+    <button class="button" type="submit">Send to Mission Control</button>
+    <a class="text-link" href="/my-gravity/#requests">View my recent requests</a>
+  </form>
+  <aside class="contact-aside"><div class="card banking-support">
+    <p class="eyebrow eyebrow--gold">Candour, always</p><h2>A request, not a resolution.</h2>
+    <p>Your submission is saved as a new item for human review. The website does not promise a response time, approve a dispute, return money or freeze a card.</p>
+    <p>If a real transaction concerns you, contact your actual bank through its official channels. This fictional bank cannot provide emergency support.</p>
+    <p class="fine-print">Only you can see requests linked to your signed-in Contact through this website.</p>
+  </div></aside>
+</section>
+{% else %}
+{% include 'Gravity Banking Gate' %}
+{% endif %}

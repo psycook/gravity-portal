@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="ReconcileCase">
+  <description default="Reserved for the exact configured asynchronous Case observer. Ordinary callers cannot select this path.">
+    <label description="Reserved for the exact configured asynchronous Case observer. Ordinary callers cannot select this path." languagecode="1033" />
+  </description>
+  <displayname default="ReconcileCase">
+    <label description="ReconcileCase" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <isoptional>1</isoptional>
+  <name>rfd_UpdateEmailProcessStep.ReconcileCase</name>
+  <type>0</type>
+</customapirequestparameter>

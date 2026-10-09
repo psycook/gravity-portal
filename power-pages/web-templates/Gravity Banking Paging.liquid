@@ -1,0 +1,2 @@
+{% comment %}Double-encoded XML cookies keep raw markup out of portal request validation.{% endcomment %}
+{% assign banking_paging_cookie = request.params.cookie | default: '' | replace: '+', ' ' | url_decode %}

@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="Mailbox">
+  <description default="Mailbox">
+    <label description="Mailbox" languagecode="1033" />
+  </description>
+  <displayname default="Mailbox">
+    <label description="Mailbox" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <isoptional>0</isoptional>
+  <name>rfd_StartEmailProcess.Mailbox</name>
+  <type>10</type>
+</customapirequestparameter>

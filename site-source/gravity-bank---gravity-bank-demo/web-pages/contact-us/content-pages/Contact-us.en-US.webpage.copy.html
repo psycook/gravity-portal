@@ -1,0 +1,59 @@
+<section class="page-hero" style="--hero-image:url('/gravity-star-trails.jpg')">
+  <div class="shell page-hero__content"><p class="eyebrow eyebrow--cyan">Contact Gravity</p><h1>Choose how we <span class="photon-text">reach you.</span></h1><p class="lede">Tell Mission Control what you need and select secure message, phone or video. This creates a simulated request in Dataverse.</p></div>
+</section>
+<section class="section"><div class="shell form-shell">
+  <div>
+    {% if user %}
+    <form class="gravity-form card" data-contact-form data-contact-id="{{ user.id }}" novalidate>
+      <div class="field">
+        <label for="requestType">What can we help with?</label>
+        <select id="requestType" name="requestType" required>
+          <option value="">Choose a reason</option>
+          <option value="228660000">General account question</option>
+          <option value="228660001">Current account switching</option>
+          <option value="228660002">Card or transaction concern</option>
+          <option value="228660003">Savings or ISA question</option>
+          <option value="228660004">Home buying or mortgage support</option>
+          <option value="228660005">Borrowing support</option>
+          <option value="228660006">Complaint</option>
+          <option value="228660007">Money worries or Soft Landing</option>
+          <option value="228660008">Accessibility or vulnerability support</option>
+          <option value="228660009">Other</option>
+        </select>
+      </div>
+      <fieldset class="field">
+        <legend>How should Mission Control contact you?</legend>
+        <div class="choice-grid">
+          <div class="choice"><input id="channel-message" type="radio" name="preferredChannel" value="228660000" required><label for="channel-message">Secure message<small>Reply in My Gravity</small></label></div>
+          <div class="choice"><input id="channel-phone" type="radio" name="preferredChannel" value="228660001"><label for="channel-phone">Phone call<small>We call your chosen number</small></label></div>
+          <div class="choice"><input id="channel-video" type="radio" name="preferredChannel" value="228660002"><label for="channel-video">Video call<small>Appointment link by email</small></label></div>
+        </div>
+      </fieldset>
+      <div class="form-grid">
+        <div class="field"><label for="contactValue">Email address or phone number</label><input id="contactValue" name="contactValue" type="text" maxlength="200" autocomplete="email" required value="{{ user.emailaddress1 | escape }}"><small>Use only the detail you want us to use for this request.</small></div>
+        <div class="field"><label for="preferredTime">Best time</label><select id="preferredTime" name="preferredTime" required><option value="228660000">Any time</option><option value="228660001">Morning</option><option value="228660002">Afternoon</option><option value="228660003">Evening</option></select></div>
+        <div class="field field--full"><label for="subject">Subject</label><input id="subject" name="subject" type="text" maxlength="150" required></div>
+        <div class="field field--full"><label for="details">What is happening?</label><textarea id="details" name="details" maxlength="2000" required aria-describedby="details-help"></textarea><small id="details-help">Do not include PINs, passwords, one-time passcodes or full card numbers.</small></div>
+        <div class="field"><label for="urgency">How urgent is this?</label><select id="urgency" name="urgency" required><option value="228660000">Standard</option><option value="228660001">Soon</option><option value="228660002">Urgent</option></select></div>
+      </div>
+      <label class="checkbox"><input type="checkbox" name="consent" required><span>I agree that Gravity may use the contact detail above to respond to this simulated request.</span></label>
+      <div class="form-status" data-form-status tabindex="-1" role="status" aria-live="polite"></div>
+      <button class="button" type="submit">Send to Mission Control</button>
+    </form>
+    {% else %}
+    <div class="card auth-gate__card">
+      <img src="/gravity-symbol-colour-glow.png" alt="">
+      <p class="eyebrow">Secure contact</p>
+      <h2>Sign in before sending a request.</h2>
+      <p class="lede">This links the Dataverse request to the correct demonstration Contact and keeps the conversation in your orbit.</p>
+      <div class="button-row" style="justify-content:center"><a class="button" href="/SignIn?returnUrl=%2Fcontact-us%2F">Sign in</a><a class="button button--outline" href="/support/">Back to help</a></div>
+    </div>
+    {% endif %}
+  </div>
+  <aside class="contact-aside">
+    <div><p class="eyebrow eyebrow--gold">Before you send</p><h2>Keep secrets secret.</h2><p class="lede">Gravity will never ask for a PIN, password, one-time passcode or full card number.</p></div>
+    <div class="contact-method"><span class="icon-orbit">A</span><div><strong>Arc can explain first</strong><p>Use the AI companion for plain-language help, then move to a person if needed.</p></div></div>
+    <div class="contact-method"><span class="icon-orbit">H</span><div><strong>Human handover</strong><p>The request captures your need and preferred channel so Mission Control can pick up with context.</p></div></div>
+    <div class="contact-method"><span class="icon-orbit">D</span><div><strong>Demonstration only</strong><p>No real banking action or emergency support is provided.</p></div></div>
+  </aside>
+</div></section>

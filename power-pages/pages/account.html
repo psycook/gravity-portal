@@ -1,0 +1,57 @@
+{% assign context_kind = 'account' %}
+{% include 'Gravity Banking Context' %}
+{% if banking_account %}
+{% include 'Gravity Banking Paging' %}
+{% assign transaction_page = request.params.p | integer | default: 1 %}
+{% if transaction_page < 1 %}{% assign transaction_page = 1 %}{% endif %}
+{% fetchxml account_transactions %}
+<fetch count="25" page="{{ transaction_page }}"{% if banking_paging_cookie != '' %} paging-cookie="{{ banking_paging_cookie | xml_escape }}"{% endif %}>
+  <entity name="rfd_financialtransaction">
+    <attribute name="rfd_financialtransactionid" /><attribute name="rfd_description" /><attribute name="rfd_amount" />
+    <attribute name="rfd_direction" /><attribute name="rfd_occurredon" /><attribute name="rfd_transactionstatus" />
+    <filter><condition attribute="rfd_financialaccountid" operator="eq" value="{{ banking_account.id }}" /></filter>
+    <order attribute="rfd_occurredon" descending="true" /><order attribute="rfd_financialtransactionid" />
+  </entity>
+</fetch>
+{% endfetchxml %}
+<section class="dashboard-hero"><div class="shell">
+  <nav class="banking-breadcrumb" aria-label="Breadcrumb"><a href="/my-gravity/">My Gravity</a><span aria-hidden="true">/</span><span>Account</span></nav>
+  <div class="dashboard-hero__top"><div><p class="eyebrow eyebrow--cyan">{{ banking_account.rfd_producttype.label | escape }}</p>
+    <h1>{{ banking_account.rfd_name | escape }}</h1><p class="lede">Your balance, activity and human support. One orbit.</p>
+  </div><span class="tag">{{ banking_account.rfd_lifecyclestatus.label | escape }}</span></div>
+</div></section>
+<section class="shell banking-account-grid">
+  <article class="card balance-card">
+    <span class="tag tag--success">Synthetic account</span>
+    <p class="muted">Current balance</p>
+    <div class="balance-card__amount money">{% if banking_account.rfd_currentbalance != nil %}&pound;{{ banking_account.rfd_currentbalance | format: 'N2' }}{% else %}Not available{% endif %}</div>
+    <dl class="banking-facts">
+      <div><dt>Available balance</dt><dd class="money">{% if banking_account.rfd_availablebalance != nil %}&pound;{{ banking_account.rfd_availablebalance | format: 'N2' }}{% else %}Not available{% endif %}</dd></div>
+      {% unless banking_is_card %}<div><dt>Account reference</dt><dd>{{ banking_account.rfd_holdingnumber | escape }}</dd></div>{% endunless %}
+      {% if banking_account.rfd_balanceasof %}<div><dt>Balance updated</dt><dd>{{ banking_account.rfd_balanceasof | date: 'dd MMM yyyy, HH:mm' }}</dd></div>{% endif %}
+      {% if banking_account.rfd_cardlastfour %}<div><dt>Card ending</dt><dd>{{ banking_account.rfd_cardlastfour | escape }}</dd></div>{% endif %}
+      {% if banking_account.rfd_cardstatus %}<div><dt>Card status</dt><dd>{{ banking_account.rfd_cardstatus.label | escape }}</dd></div>{% endif %}
+    </dl>
+    <div class="button-row"><a class="button button--small" href="/banking-request/?kind=account&amp;id={{ banking_account.id }}">Request help</a><a class="button button--small button--outline" href="/banking-request/?kind=account&amp;id={{ banking_account.id }}&amp;reason=complaint">Make a complaint</a></div>
+  </article>
+  <figure class="card banking-card-art">
+    {% include 'Gravity Card Artwork' %}
+    <figcaption><span class="tag">Illustrative mock card</span><p>{{ card_tier | escape }} &middot; {{ card_planet | escape }} &middot; {{ card_instrument | escape }}</p>
+      <p class="fine-print">Design illustration only. No real card is issued.{% if banking_account.rfd_producttype.value != 100000000 and banking_account.rfd_producttype.value != 100000005 and banking_account.rfd_producttype.value != 100000006 and banking_account.rfd_producttype.value != 100000007 %} This product does not imply a payment card.{% endif %}</p>
+    </figcaption>
+  </figure>
+</section>
+<section class="shell banking-section">
+  <article class="card" id="transactions"><div class="banking-section-heading"><div><p class="eyebrow">All account activity</p><h2>Transactions</h2></div><span class="tag">Page {{ transaction_page }}</span></div>
+    <p class="muted">Select any transaction for its overview, or to raise a query, dispute or suspected-fraud request.</p>
+    {% include 'Gravity Transaction Rows' transactions: account_transactions.results.entities show_account: false %}
+    <nav class="banking-pagination" aria-label="Transaction pages">
+      {% if transaction_page > 1 %}<a class="button button--small button--outline" href="/account/?id={{ banking_account.id }}#transactions">Back to newest</a>{% endif %}
+      {% if account_transactions.results.more_records %}<a class="button button--small" href="/account/?id={{ banking_account.id }}&amp;p={{ transaction_page | plus: 1 }}&amp;cookie={{ account_transactions.results.paging_cookie | url_encode | url_encode }}#transactions">Older transactions</a>{% endif %}
+    </nav>
+    <p class="fine-print">Up to 25 entries per page, newest first. Pending and declined activity is labelled; a displayed entry is not proof of a completed payment.</p>
+  </article>
+</section>
+{% else %}
+{% include 'Gravity Banking Gate' %}
+{% endif %}

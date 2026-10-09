@@ -1,0 +1,134 @@
+{
+  "name": "Gravity (dark)",
+  "dataColors": [
+    "#7B61FF",
+    "#46E0F5",
+    "#FFB648",
+    "#B4A6FF",
+    "#3DDC97",
+    "#FF5D6C",
+    "#2F8FD8",
+    "#E58AE0",
+    "#9AA1B9",
+    "#F7D9A0"
+  ],
+  "background": "#05060B",
+  "foreground": "#F5F2EC",
+  "tableAccent": "#7B61FF",
+  "good": "#3DDC97",
+  "neutral": "#FFB648",
+  "bad": "#FF5D6C",
+  "maximum": "#46E0F5",
+  "center": "#7B61FF",
+  "minimum": "#0D1124",
+  "null": "#9AA1B9",
+  "firstLevelElements": "#F5F2EC",
+  "secondLevelElements": "#9AA1B9",
+  "thirdLevelElements": "#151A35",
+  "fourthLevelElements": "#9AA1B9",
+  "background2": "#0D1124",
+  "secondaryBackground": "#0D1124",
+  "backgroundLight": "#151A35",
+  "backgroundNeutral": "#151A35",
+  "textClasses": {
+    "callout": {
+      "fontSize": 32,
+      "fontFace": "Segoe UI Light",
+      "color": "#F5F2EC"
+    },
+    "title": {
+      "fontSize": 14,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#F5F2EC"
+    },
+    "header": {
+      "fontSize": 12,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#F5F2EC"
+    },
+    "label": {
+      "fontSize": 10,
+      "fontFace": "Segoe UI",
+      "color": "#9AA1B9"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#0D1124"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#151A35"
+              }
+            },
+            "radius": 12
+          }
+        ],
+        "title": [
+          {
+            "show": true,
+            "fontColor": {
+              "solid": {
+                "color": "#F5F2EC"
+              }
+            },
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 12
+          }
+        ],
+        "visualHeader": [
+          {
+            "show": true,
+            "background": {
+              "solid": {
+                "color": "#0D1124"
+              }
+            },
+            "foreground": {
+              "solid": {
+                "color": "#9AA1B9"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#05060B"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "outspace": [
+          {
+            "color": {
+              "solid": {
+                "color": "#05060B"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}

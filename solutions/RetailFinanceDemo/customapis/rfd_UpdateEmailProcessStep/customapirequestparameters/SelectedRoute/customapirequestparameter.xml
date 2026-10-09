@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="SelectedRoute">
+  <description default="SelectedRoute">
+    <label description="SelectedRoute" languagecode="1033" />
+  </description>
+  <displayname default="SelectedRoute">
+    <label description="SelectedRoute" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <isoptional>1</isoptional>
+  <name>rfd_UpdateEmailProcessStep.SelectedRoute</name>
+  <type>10</type>
+</customapirequestparameter>

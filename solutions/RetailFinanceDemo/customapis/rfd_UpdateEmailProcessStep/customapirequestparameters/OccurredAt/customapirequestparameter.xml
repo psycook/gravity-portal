@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="OccurredAt">
+  <description default="Required immutable event timestamp for workflow updates.">
+    <label description="Required immutable event timestamp for workflow updates." languagecode="1033" />
+  </description>
+  <displayname default="OccurredAt">
+    <label description="OccurredAt" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <isoptional>1</isoptional>
+  <name>rfd_UpdateEmailProcessStep.OccurredAt</name>
+  <type>1</type>
+</customapirequestparameter>

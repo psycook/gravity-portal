@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="ErrorCode">
+  <description default="ErrorCode">
+    <label description="ErrorCode" languagecode="1033" />
+  </description>
+  <displayname default="ErrorCode">
+    <label description="ErrorCode" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <isoptional>1</isoptional>
+  <name>rfd_UpdateEmailProcessStep.ErrorCode</name>
+  <type>10</type>
+</customapirequestparameter>

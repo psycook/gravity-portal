@@ -1,0 +1,9 @@
+<pluginpackage uniquename="rfd_GravityBank.ProcessTracking">
+  <exportkeyversion>1</exportkeyversion>
+  <iscustomizable>1</iscustomizable>
+  <name>rfd_GravityBank.ProcessTracking</name>
+  <package mimetype="application/octet-stream">rfd_GravityBank.ProcessTracking.nupkg</package>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <version>1.0.0</version>
+</pluginpackage>

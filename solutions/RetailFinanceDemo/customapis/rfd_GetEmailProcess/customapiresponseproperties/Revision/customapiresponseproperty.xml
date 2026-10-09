@@ -1,0 +1,11 @@
+<customapiresponseproperty uniquename="Revision">
+  <description default="Revision">
+    <label description="Revision" languagecode="1033" />
+  </description>
+  <displayname default="Revision">
+    <label description="Revision" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <name>rfd_GetEmailProcess.Revision</name>
+  <type>7</type>
+</customapiresponseproperty>

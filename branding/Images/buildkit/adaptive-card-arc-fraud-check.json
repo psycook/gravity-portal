@@ -1,0 +1,66 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "NOTHING ESCAPES OUR ATTENTION",
+      "size": "Small",
+      "weight": "Bolder",
+      "color": "Accent",
+      "spacing": "None"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Was this you?",
+      "size": "ExtraLarge",
+      "weight": "Bolder",
+      "wrap": true
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        {
+          "title": "Amount",
+          "value": "£249.00"
+        },
+        {
+          "title": "Merchant",
+          "value": "Online retailer (example)"
+        },
+        {
+          "title": "When",
+          "value": "Today, 21:42"
+        },
+        {
+          "title": "Card",
+          "value": "Orbit card ending 4821"
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "If it wasn't you, we'll freeze your card straight away and a Mission Control specialist will call you. Gravity will never ask for your PIN, passwords or one-time passcodes.",
+      "wrap": true,
+      "isSubtle": true
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Yes, it was me",
+      "data": {
+        "action": "confirm_genuine"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "No — freeze my card",
+      "style": "destructive",
+      "data": {
+        "action": "freeze_card"
+      }
+    }
+  ]
+}

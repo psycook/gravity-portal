@@ -1,0 +1,42 @@
+{% unless page.adx_partialurl == 'account' or page.adx_partialurl == 'transaction' or page.adx_partialurl == 'banking-request' or page.adx_partialurl == 'my-gravity' or page.adx_partialurl == 'contact-us' %}
+<aside class="arc-dock" aria-label="Arc AI demonstration">
+  <a href="/arc/" class="arc-dock__link">
+    <img src="/arc-agent-icon-192.png" alt="">
+    <span><strong>Ask Arc</strong><small>AI money companion</small></span>
+  </a>
+</aside>
+{% endunless %}
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div class="footer-brand">
+      <img src="/gravity-lockup-horizontal-on-dark.png" alt="Gravity">
+      <p>Your money, your orbit.</p>
+      <p class="fine-print">A fictional Power Pages demonstration. No real accounts, payments, lending decisions or financial advice.</p>
+    </div>
+    <div>
+      <h2>Explore</h2>
+      <a href="/everyday/">Everyday banking</a>
+      <a href="/save/">Savings</a>
+      <a href="/home-buying/">Home buying</a>
+      <a href="/borrow/">Borrowing</a>
+    </div>
+    <div>
+      <h2>Together</h2>
+      <a href="/solar-system/">Solar System</a>
+      <a href="/switch/">Switch to Gravity</a>
+      <a href="/arc/">Meet Arc</a>
+      <a href="/support/">Mission Control</a>
+    </div>
+    <div>
+      <h2>Clear and candid</h2>
+      <a href="/proof/">Proof hub</a>
+      <a href="/proof/#ai-register">AI register</a>
+      <a href="/contact-us/">Contact us</a>
+      {% if user %}<a href="/my-gravity/">My Gravity</a>{% endif %}
+    </div>
+  </div>
+  <div class="shell footer-legal">
+    <span>&copy; {{ now | date: 'yyyy' }} Gravity demonstration bank</span>
+    <span>Built for synthetic-data demonstration only</span>
+  </div>
+</footer>

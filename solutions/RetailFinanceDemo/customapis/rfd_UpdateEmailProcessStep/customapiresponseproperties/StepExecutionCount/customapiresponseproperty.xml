@@ -1,0 +1,11 @@
+<customapiresponseproperty uniquename="StepExecutionCount">
+  <description default="StepExecutionCount">
+    <label description="StepExecutionCount" languagecode="1033" />
+  </description>
+  <displayname default="StepExecutionCount">
+    <label description="StepExecutionCount" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <name>rfd_UpdateEmailProcessStep.StepExecutionCount</name>
+  <type>7</type>
+</customapiresponseproperty>

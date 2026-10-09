@@ -1,0 +1,116 @@
+{
+  "environment": "https://smc-diamond-service.crm.dynamics.com",
+  "table": "rfd_financialaccount",
+  "column": "rfd_name",
+  "approved_record_count": 331,
+  "approved_on": "2026-10-07",
+  "preserve_suffix_pattern": " ending [0-9]{4}",
+  "rules": [
+    {
+      "old_prefix": "Gravity Basic Current Account",
+      "new_prefix": "Gravity Orbit basic current account",
+      "product_type": 100000000,
+      "expected_count": 26
+    },
+    {
+      "old_prefix": "Gravity Everyday Current Account",
+      "new_prefix": "Gravity Orbit everyday current account",
+      "product_type": 100000000,
+      "expected_count": 18
+    },
+    {
+      "old_prefix": "Gravity Reward Current Account",
+      "new_prefix": "Gravity Orbit rewards current account",
+      "product_type": 100000000,
+      "expected_count": 18
+    },
+    {
+      "old_prefix": "Gravity Premium Current Account",
+      "new_prefix": "Gravity Event Horizon premium current account",
+      "product_type": 100000000,
+      "expected_count": 38
+    },
+    {
+      "old_prefix": "Gravity Easy Access Saver",
+      "new_prefix": "Gravity Liftoff easy-access saver",
+      "product_type": 100000001,
+      "expected_count": 43
+    },
+    {
+      "old_prefix": "Gravity 12 Month Fixed Saver",
+      "new_prefix": "Gravity Deep Space 12-month fixed saver",
+      "product_type": 100000001,
+      "expected_count": 3
+    },
+    {
+      "old_prefix": "Gravity Flexible Cash ISA",
+      "new_prefix": "Gravity Zero-G flexible cash ISA",
+      "product_type": 100000002,
+      "expected_count": 37
+    },
+    {
+      "old_prefix": "Gravity Stocks and Shares ISA",
+      "new_prefix": "Gravity Constellation stocks and shares ISA",
+      "product_type": 100000002,
+      "expected_count": 7
+    },
+    {
+      "old_prefix": "Gravity Lifetime Cash ISA",
+      "new_prefix": "Gravity Escape Velocity lifetime cash ISA",
+      "product_type": 100000002,
+      "expected_count": 1
+    },
+    {
+      "old_prefix": "Gravity Repayment Mortgage",
+      "new_prefix": "Gravity Landing repayment mortgage",
+      "product_type": 100000003,
+      "expected_count": 8
+    },
+    {
+      "old_prefix": "Gravity Personal Loan",
+      "new_prefix": "Gravity Momentum personal loan",
+      "product_type": 100000004,
+      "expected_count": 14
+    },
+    {
+      "old_prefix": "Gravity Credit Card Account",
+      "new_prefix": "Gravity Venus credit card account",
+      "product_type": 100000005,
+      "expected_count": 20
+    },
+    {
+      "old_prefix": "Gravity Visa Debit Card",
+      "new_prefix": "Gravity Earth Visa debit card",
+      "product_type": 100000006,
+      "linked_account_old_prefix": "Gravity Basic Current Account",
+      "expected_count": 22
+    },
+    {
+      "old_prefix": "Gravity Visa Debit Card",
+      "new_prefix": "Gravity Earth Visa debit card",
+      "product_type": 100000006,
+      "linked_account_old_prefix": "Gravity Everyday Current Account",
+      "expected_count": 13
+    },
+    {
+      "old_prefix": "Gravity Visa Debit Card",
+      "new_prefix": "Gravity Earth Visa debit card",
+      "product_type": 100000006,
+      "linked_account_old_prefix": "Gravity Reward Current Account",
+      "expected_count": 15
+    },
+    {
+      "old_prefix": "Gravity Visa Debit Card",
+      "new_prefix": "Gravity Neptune Visa debit card",
+      "product_type": 100000006,
+      "linked_account_old_prefix": "Gravity Premium Current Account",
+      "expected_count": 28
+    },
+    {
+      "old_prefix": "Gravity Mastercard Credit Card",
+      "new_prefix": "Gravity Venus Mastercard credit card",
+      "product_type": 100000007,
+      "expected_count": 20
+    }
+  ]
+}

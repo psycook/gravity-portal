@@ -1,0 +1,13 @@
+[
+  {"value":228660000,"tier":"Launchpad","planet":"Moon","instrument":"Debit","source":"gravity-card-01-moon-launchpad-debit.png"},
+  {"value":228660001,"tier":"Starter","planet":"Mars","instrument":"Debit","source":"gravity-card-02-mars-starter-debit.png"},
+  {"value":228660002,"tier":"Starter","planet":"Mercury","instrument":"Credit","source":"gravity-card-03-mercury-starter-credit.png"},
+  {"value":228660003,"tier":"Everyday","planet":"Earth","instrument":"Debit","source":"gravity-card-04-earth-everyday-debit.png"},
+  {"value":228660004,"tier":"Everyday","planet":"Venus","instrument":"Credit","source":"gravity-card-05-venus-everyday-credit.png"},
+  {"value":228660005,"tier":"Premier","planet":"Neptune","instrument":"Debit","source":"gravity-card-06-neptune-premier-debit.png"},
+  {"value":228660006,"tier":"Premier","planet":"Uranus","instrument":"Credit","source":"gravity-card-07-uranus-premier-credit.png"},
+  {"value":228660007,"tier":"Wealth","planet":"Jupiter","instrument":"Debit","source":"gravity-card-08-jupiter-wealth-debit.png"},
+  {"value":228660008,"tier":"Wealth","planet":"Saturn","instrument":"Credit","source":"gravity-card-09-saturn-wealth-credit.png"},
+  {"value":228660009,"tier":"Private","planet":"Sun","instrument":"Debit","source":"gravity-card-10-sun-private-debit.png"},
+  {"value":228660010,"tier":"Private","planet":"Sun / Eclipse","instrument":"Credit","source":"gravity-card-11-sun-eclipse-private-credit.png"}
+]

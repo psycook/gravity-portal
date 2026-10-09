@@ -1,0 +1,321 @@
+{
+  "gravity": {
+    "$description": "GRAVITY design tokens v1.0 — fictional concept brand for demonstration purposes.",
+    "color": {
+      "singularity-black": {
+        "$value": "#05060B",
+        "$type": "color",
+        "$description": "Primary background (dark-first)"
+      },
+      "deep-field": {
+        "$value": "#0D1124",
+        "$type": "color",
+        "$description": "Surfaces and cards"
+      },
+      "event-navy": {
+        "$value": "#151A35",
+        "$type": "color",
+        "$description": "Raised surfaces, borders"
+      },
+      "horizon-violet": {
+        "$value": "#7B61FF",
+        "$type": "color",
+        "$description": "Primary accent; buttons on dark"
+      },
+      "violet-700": {
+        "$value": "#5B3FE0",
+        "$type": "color",
+        "$description": "Violet text and buttons on light"
+      },
+      "nebula-lilac": {
+        "$value": "#B4A6FF",
+        "$type": "color",
+        "$description": "Violet text on dark"
+      },
+      "photon-cyan": {
+        "$value": "#46E0F5",
+        "$type": "color",
+        "$description": "Secondary accent, links and data on dark"
+      },
+      "accretion-gold": {
+        "$value": "#FFB648",
+        "$type": "color",
+        "$description": "Warm highlight, rewards, premium"
+      },
+      "hot-white": {
+        "$value": "#FFF1D9",
+        "$type": "color",
+        "$description": "Gradient stop only"
+      },
+      "starlight": {
+        "$value": "#F5F2EC",
+        "$type": "color",
+        "$description": "Text on dark; light-mode background"
+      },
+      "moondust": {
+        "$value": "#9AA1B9",
+        "$type": "color",
+        "$description": "Secondary text on dark"
+      },
+      "slate": {
+        "$value": "#4A5070",
+        "$type": "color",
+        "$description": "Secondary text on light"
+      },
+      "aurora-green": {
+        "$value": "#3DDC97",
+        "$type": "color",
+        "$description": "Success"
+      },
+      "red-giant": {
+        "$value": "#FF5D6C",
+        "$type": "color",
+        "$description": "Error / alert"
+      },
+      "light-mode": {
+        "cyan-text": {
+          "$value": "#257782",
+          "$type": "color",
+          "$description": "Text-safe cyan on Starlight (4.65:1)"
+        },
+        "gold-text": {
+          "$value": "#8C6428",
+          "$type": "color",
+          "$description": "Text-safe gold on Starlight (4.74:1)"
+        },
+        "success": {
+          "$value": "#227B55",
+          "$type": "color"
+        },
+        "error": {
+          "$value": "#BA444F",
+          "$type": "color"
+        }
+      }
+    },
+    "gradient": {
+      "photon-ring": {
+        "$value": [
+          {
+            "color": "#FFB648",
+            "position": 0
+          },
+          {
+            "color": "#FFF1D9",
+            "position": 0.34
+          },
+          {
+            "color": "#46E0F5",
+            "position": 0.64
+          },
+          {
+            "color": "#7B61FF",
+            "position": 1
+          }
+        ],
+        "$type": "gradient",
+        "$description": "Signature — logo and hero moments only"
+      },
+      "horizon": {
+        "$value": [
+          {
+            "color": "#7B61FF",
+            "position": 0
+          },
+          {
+            "color": "#46E0F5",
+            "position": 1
+          }
+        ],
+        "$type": "gradient",
+        "$description": "UI — primary actions and progress"
+      }
+    },
+    "font": {
+      "family": {
+        "display": {
+          "$value": [
+            "Lexend",
+            "Segoe UI",
+            "system-ui",
+            "sans-serif"
+          ],
+          "$type": "fontFamily"
+        },
+        "label": {
+          "$value": [
+            "Lexend Exa",
+            "Lexend",
+            "Segoe UI",
+            "sans-serif"
+          ],
+          "$type": "fontFamily"
+        },
+        "body": {
+          "$value": [
+            "Inter",
+            "Segoe UI",
+            "system-ui",
+            "sans-serif"
+          ],
+          "$type": "fontFamily"
+        },
+        "m365": {
+          "$value": [
+            "Segoe UI"
+          ],
+          "$type": "fontFamily",
+          "$description": "Microsoft 365: Light for display, Semibold for headings, Regular for body"
+        }
+      },
+      "size": {
+        "display": {
+          "$value": "64px",
+          "$type": "dimension"
+        },
+        "h1": {
+          "$value": "48px",
+          "$type": "dimension"
+        },
+        "h2": {
+          "$value": "36px",
+          "$type": "dimension"
+        },
+        "h3": {
+          "$value": "24px",
+          "$type": "dimension"
+        },
+        "body-l": {
+          "$value": "18px",
+          "$type": "dimension"
+        },
+        "body": {
+          "$value": "16px",
+          "$type": "dimension"
+        },
+        "caption": {
+          "$value": "13px",
+          "$type": "dimension"
+        },
+        "eyebrow": {
+          "$value": "12px",
+          "$type": "dimension"
+        }
+      },
+      "line-height": {
+        "display": {
+          "$value": "72px",
+          "$type": "dimension"
+        },
+        "h1": {
+          "$value": "56px",
+          "$type": "dimension"
+        },
+        "h2": {
+          "$value": "44px",
+          "$type": "dimension"
+        },
+        "h3": {
+          "$value": "32px",
+          "$type": "dimension"
+        },
+        "body-l": {
+          "$value": "28px",
+          "$type": "dimension"
+        },
+        "body": {
+          "$value": "24px",
+          "$type": "dimension"
+        },
+        "caption": {
+          "$value": "18px",
+          "$type": "dimension"
+        },
+        "eyebrow": {
+          "$value": "16px",
+          "$type": "dimension"
+        }
+      }
+    },
+    "radius": {
+      "s": {
+        "$value": "8px",
+        "$type": "dimension"
+      },
+      "m": {
+        "$value": "16px",
+        "$type": "dimension"
+      },
+      "l": {
+        "$value": "24px",
+        "$type": "dimension"
+      },
+      "pill": {
+        "$value": "999px",
+        "$type": "dimension"
+      }
+    },
+    "space": {
+      "1": {
+        "$value": "4px",
+        "$type": "dimension"
+      },
+      "2": {
+        "$value": "8px",
+        "$type": "dimension"
+      },
+      "3": {
+        "$value": "12px",
+        "$type": "dimension"
+      },
+      "4": {
+        "$value": "16px",
+        "$type": "dimension"
+      },
+      "6": {
+        "$value": "24px",
+        "$type": "dimension"
+      },
+      "8": {
+        "$value": "32px",
+        "$type": "dimension"
+      },
+      "12": {
+        "$value": "48px",
+        "$type": "dimension"
+      },
+      "16": {
+        "$value": "64px",
+        "$type": "dimension"
+      },
+      "24": {
+        "$value": "96px",
+        "$type": "dimension"
+      }
+    },
+    "motion": {
+      "ease-orbit": {
+        "$value": [
+          0.65,
+          0,
+          0.35,
+          1
+        ],
+        "$type": "cubicBezier",
+        "$description": "\"Orbit, don't bounce\""
+      },
+      "duration-fast": {
+        "$value": "240ms",
+        "$type": "duration"
+      },
+      "duration-base": {
+        "$value": "400ms",
+        "$type": "duration"
+      },
+      "duration-slow": {
+        "$value": "600ms",
+        "$type": "duration"
+      }
+    }
+  }
+}

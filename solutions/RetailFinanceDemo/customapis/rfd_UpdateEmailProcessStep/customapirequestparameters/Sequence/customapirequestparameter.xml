@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="Sequence">
+  <description default="Required positive sequence within the business attempt for workflow updates.">
+    <label description="Required positive sequence within the business attempt for workflow updates." languagecode="1033" />
+  </description>
+  <displayname default="Sequence">
+    <label description="Sequence" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <isoptional>1</isoptional>
+  <name>rfd_UpdateEmailProcessStep.Sequence</name>
+  <type>7</type>
+</customapirequestparameter>

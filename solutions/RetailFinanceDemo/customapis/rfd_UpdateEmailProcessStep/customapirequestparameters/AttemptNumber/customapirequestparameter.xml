@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="AttemptNumber">
+  <description default="Required sequential positive business-attempt ordinal for workflow updates.">
+    <label description="Required sequential positive business-attempt ordinal for workflow updates." languagecode="1033" />
+  </description>
+  <displayname default="AttemptNumber">
+    <label description="AttemptNumber" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <isoptional>1</isoptional>
+  <name>rfd_UpdateEmailProcessStep.AttemptNumber</name>
+  <type>7</type>
+</customapirequestparameter>

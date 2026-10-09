@@ -1,0 +1,52 @@
+// =====================================================================
+// GRAVITY — Power Apps brand tokens (paste into App > Formulas)
+// Use in controls, e.g.  Fill = GravityColor.DeepField   Color = GravityColor.Starlight
+// Gravity is a fictional concept brand for demonstration purposes.
+// =====================================================================
+GravityColor = {
+    SingularityBlack: ColorValue("#05060B"),
+    DeepField:        ColorValue("#0D1124"),
+    EventNavy:        ColorValue("#151A35"),
+    HorizonViolet:    ColorValue("#7B61FF"),
+    Violet700:        ColorValue("#5B3FE0"),
+    NebulaLilac:      ColorValue("#B4A6FF"),
+    PhotonCyan:       ColorValue("#46E0F5"),
+    AccretionGold:    ColorValue("#FFB648"),
+    Starlight:        ColorValue("#F5F2EC"),
+    Moondust:         ColorValue("#9AA1B9"),
+    Slate:            ColorValue("#4A5070"),
+    AuroraGreen:      ColorValue("#3DDC97"),
+    RedGiant:         ColorValue("#FF5D6C")
+};
+
+// Semantic roles (dark-first). Swap to the Light set for light-mode apps.
+GravityTheme = {
+    Background:   GravityColor.SingularityBlack,
+    Surface:      GravityColor.DeepField,
+    Raised:       GravityColor.EventNavy,
+    Text:         GravityColor.Starlight,
+    TextMuted:    GravityColor.Moondust,
+    Primary:      GravityColor.HorizonViolet,
+    OnPrimary:    GravityColor.SingularityBlack,
+    Link:         GravityColor.PhotonCyan,
+    Highlight:    GravityColor.AccretionGold,
+    Success:      GravityColor.AuroraGreen,
+    Error:        GravityColor.RedGiant
+};
+GravityThemeLight = {
+    Background:   GravityColor.Starlight,
+    Surface:      ColorValue("#FFFFFF"),
+    Text:         GravityColor.SingularityBlack,
+    TextMuted:    GravityColor.Slate,
+    Primary:      GravityColor.Violet700,
+    OnPrimary:    ColorValue("#FFFFFF"),
+    Link:         GravityColor.Violet700,
+    Success:      ColorValue("#227B55"),
+    Error:        ColorValue("#BA444F")
+};
+
+GravityFont   = { Display: "Segoe UI Light", Heading: "Segoe UI Semibold", Body: "Segoe UI" };
+GravityRadius = { Card: 16, Input: 12, Button: 24 };
+GravitySpace  = { XS: 4, S: 8, M: 16, L: 24, XL: 40 };
+
+// Logo: upload logos/png/gravity-lockup-horizontal-on-dark-2400.png via Media, then Image = 'gravity-lockup-horizontal-on-dark-2400'

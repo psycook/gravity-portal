@@ -1,0 +1,107 @@
+/* =========================================================
+   GRAVITY — design tokens (CSS custom properties) v1.0
+   Dark-first. Add data-theme="light" on <html> or any container for light mode.
+   Contrast ratios are WCAG 2.x, calculated against the theme background.
+   Gravity is a fictional concept brand for demonstration purposes.
+   ========================================================= */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend:wght@300;400;600&family=Lexend+Exa:wght@400;500&display=swap");
+
+:root, [data-theme="dark"] {
+  /* Core palette */
+  --gr-singularity-black: #05060B;
+  --gr-deep-field: #0D1124;
+  --gr-event-navy: #151A35;
+  --gr-horizon-violet: #7B61FF;
+  --gr-violet-700: #5B3FE0;
+  --gr-nebula-lilac: #B4A6FF;
+  --gr-photon-cyan: #46E0F5;
+  --gr-accretion-gold: #FFB648;
+  --gr-hot-white: #FFF1D9;
+  --gr-starlight: #F5F2EC;
+  --gr-moondust: #9AA1B9;
+  --gr-slate: #4A5070;
+  --gr-aurora-green: #3DDC97;
+  --gr-red-giant: #FF5D6C;
+
+  /* Semantic roles — dark theme (default) */
+  --gr-bg: var(--gr-singularity-black);
+  --gr-surface: var(--gr-deep-field);
+  --gr-surface-raised: var(--gr-event-navy);
+  --gr-border: rgba(245, 242, 236, 0.12);
+  --gr-text: var(--gr-starlight);              /* 18.12:1 */
+  --gr-text-muted: var(--gr-moondust);         /* 7.88:1 */
+  --gr-link: var(--gr-photon-cyan);            /* 12.76:1 */
+  --gr-accent-text: var(--gr-nebula-lilac);    /* 9.49:1 */
+  --gr-primary: var(--gr-horizon-violet);      /* 4.82:1 vs bg */
+  --gr-on-primary: var(--gr-singularity-black);/* 4.82:1 text on primary */
+  --gr-highlight: var(--gr-accretion-gold);    /* 11.6:1 */
+  --gr-success: var(--gr-aurora-green);        /* 11.45:1 */
+  --gr-error: var(--gr-red-giant);             /* 6.78:1 */
+  --gr-warning: var(--gr-accretion-gold);
+  --gr-focus-ring: 0 0 0 3px var(--gr-bg), 0 0 0 5px var(--gr-photon-cyan);
+
+  /* Gradients */
+  --gr-gradient-photon-ring: linear-gradient(135deg, #FFB648 0%, #FFF1D9 34%, #46E0F5 64%, #7B61FF 100%); /* logo + hero moments only */
+  --gr-gradient-horizon: linear-gradient(135deg, #7B61FF 0%, #46E0F5 100%);   /* primary actions, progress */
+  --gr-glow: 0 0 48px rgba(123, 97, 255, 0.35), 0 0 120px rgba(70, 224, 245, 0.12);
+
+  /* Typography */
+  --gr-font-display: "Lexend", "Segoe UI", system-ui, sans-serif;
+  --gr-font-label: "Lexend Exa", "Lexend", "Segoe UI", system-ui, sans-serif;
+  --gr-font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --gr-font-m365-display: "Segoe UI Light", "Segoe UI", sans-serif;
+  --gr-text-display: 300 4rem/4.5rem var(--gr-font-display);   /* 64/72 */
+  --gr-text-h1: 400 3rem/3.5rem var(--gr-font-display);        /* 48/56 */
+  --gr-text-h2: 400 2.25rem/2.75rem var(--gr-font-display);    /* 36/44 */
+  --gr-text-h3: 600 1.5rem/2rem var(--gr-font-display);        /* 24/32 */
+  --gr-text-body-l: 400 1.125rem/1.75rem var(--gr-font-body);  /* 18/28 */
+  --gr-text-body: 400 1rem/1.5rem var(--gr-font-body);         /* 16/24 */
+  --gr-text-caption: 400 0.8125rem/1.125rem var(--gr-font-body); /* 13/18 */
+  --gr-text-eyebrow: 500 0.75rem/1rem var(--gr-font-label);    /* 12/16, uppercase */
+  --gr-eyebrow-tracking: 0.2em;
+
+  /* Shape, space, depth */
+  --gr-radius-s: 8px; --gr-radius-m: 16px; --gr-radius-l: 24px; --gr-radius-pill: 999px;
+  --gr-space-1: 4px; --gr-space-2: 8px; --gr-space-3: 12px; --gr-space-4: 16px; --gr-space-6: 24px; --gr-space-8: 32px; --gr-space-12: 48px; --gr-space-16: 64px; --gr-space-24: 96px;
+  --gr-shadow-card: 0 12px 40px rgba(0, 0, 0, 0.45);
+
+  /* Motion — "orbit, don't bounce" */
+  --gr-ease-orbit: cubic-bezier(0.65, 0, 0.35, 1);
+  --gr-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --gr-duration-fast: 240ms; --gr-duration-base: 400ms; --gr-duration-slow: 600ms;
+}
+
+[data-theme="light"] {
+  --gr-bg: var(--gr-starlight);
+  --gr-surface: #FFFFFF;
+  --gr-surface-raised: #FFFFFF;
+  --gr-border: rgba(5, 6, 11, 0.12);
+  --gr-text: var(--gr-singularity-black);      /* 18.12:1 */
+  --gr-text-muted: var(--gr-slate);            /* 7.03:1 */
+  --gr-link: var(--gr-violet-700);             /* 5.81:1 */
+  --gr-accent-text: var(--gr-violet-700);
+  --gr-primary: var(--gr-violet-700);
+  --gr-on-primary: #FFFFFF;                    /* 6.5:1 */
+  --gr-highlight: #8C6428;                    /* 4.74:1 (text-safe gold) */
+  --gr-data-cyan: #257782;                    /* 4.65:1 (text-safe cyan) */
+  --gr-success: #227B55;                     /* 4.66:1 */
+  --gr-error: #BA444F;                         /* 4.67:1 */
+  --gr-warning: #8C6428;
+  --gr-focus-ring: 0 0 0 3px var(--gr-bg), 0 0 0 5px var(--gr-violet-700);
+  --gr-shadow-card: 0 12px 32px rgba(5, 6, 11, 0.10);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --gr-duration-fast: 0ms; --gr-duration-base: 0ms; --gr-duration-slow: 0ms; }
+}
+
+/* Starter components */
+.gr-eyebrow { font: var(--gr-text-eyebrow); letter-spacing: var(--gr-eyebrow-tracking); text-transform: uppercase; color: var(--gr-link); }
+.gr-btn { display: inline-flex; align-items: center; gap: var(--gr-space-2); padding: 14px 24px; border-radius: var(--gr-radius-pill); font: 600 1rem/1 var(--gr-font-body); border: 0; cursor: pointer; transition: transform var(--gr-duration-fast) var(--gr-ease-orbit), box-shadow var(--gr-duration-base) var(--gr-ease-orbit); }
+.gr-btn--primary { background: var(--gr-gradient-horizon); color: var(--gr-singularity-black); }
+.gr-btn--primary:hover { box-shadow: var(--gr-glow); transform: translateY(-1px); }
+.gr-btn--secondary { background: transparent; color: var(--gr-text); box-shadow: inset 0 0 0 1px var(--gr-border); }
+.gr-btn:focus-visible { outline: none; box-shadow: var(--gr-focus-ring); }
+.gr-card { background: var(--gr-surface); color: var(--gr-text); border: 1px solid var(--gr-border); border-radius: var(--gr-radius-l); padding: var(--gr-space-8); box-shadow: var(--gr-shadow-card); }
+.gr-card--highlight { border: 1px solid transparent; background: linear-gradient(var(--gr-surface), var(--gr-surface)) padding-box, var(--gr-gradient-photon-ring) border-box; }
+.gr-amount { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }

@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="ContactId">
+  <description default="ContactId">
+    <label description="ContactId" languagecode="1033" />
+  </description>
+  <displayname default="ContactId">
+    <label description="ContactId" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <isoptional>1</isoptional>
+  <name>rfd_StartEmailProcess.ContactId</name>
+  <type>12</type>
+</customapirequestparameter>

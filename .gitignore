@@ -1,0 +1,63 @@
+# Local configuration and authentication
+.env
+.env.*
+!.env.example
+.envrc
+.auth/
+.copilot/
+*tokencache*
+*.pfx
+*.p12
+*.key
+
+# Synthetic QA credentials, browser sessions and test output
+banking-qa*.json
+*-browser-state.json
+*storage-state*.json
+qa-artifacts/
+test-results/
+playwright-report/
+playwright/.auth/
+
+# Python environments and caches
+/.venv/
+/venv/
+/env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+*.egg-info/
+
+# Downloaded comparison copies; site-source is the canonical upload source
+/banking-deployment-readback/
+/deployed-site-export/
+/production-site-check/
+
+# Packed solution exports; retain the unpacked solution XML
+/solutions/**/*.zip
+/solutions/**/*.cab
+
+# Local diagnostics, editor state and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+.cache/
+.vs/
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+.DS_Store
+Thumbs.db
+Desktop.ini
+~$*

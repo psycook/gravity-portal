@@ -1,0 +1,52 @@
+{% assign context_id = request.params.id | default: '' | strip | downcase %}
+{% assign hex_id = context_id | remove: '-' %}
+{% assign invalid_hex = hex_id | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9' | remove: 'a' | remove: 'b' | remove: 'c' | remove: 'd' | remove: 'e' | remove: 'f' %}
+{% assign dash_one = context_id | slice: 8, 1 %}
+{% assign dash_two = context_id | slice: 13, 1 %}
+{% assign dash_three = context_id | slice: 18, 1 %}
+{% assign dash_four = context_id | slice: 23, 1 %}
+{% assign valid_context_id = false %}
+{% assign banking_account = nil %}
+{% assign banking_transaction = nil %}
+{% assign account_id = nil %}
+{% assign banking_is_card = false %}
+{% if context_id.size == 36 and hex_id.size == 32 and invalid_hex == '' and dash_one == '-' and dash_two == '-' and dash_three == '-' and dash_four == '-' %}
+  {% assign valid_context_id = true %}
+{% endif %}
+{% if user and valid_context_id %}
+  {% if context_kind == 'transaction' %}
+    {% fetchxml context_transaction %}
+    <fetch top="1"><entity name="rfd_financialtransaction">
+      <attribute name="rfd_financialtransactionid" /><attribute name="rfd_financialaccountid" />
+      <attribute name="rfd_description" /><attribute name="rfd_amount" /><attribute name="rfd_direction" />
+      <attribute name="rfd_occurredon" /><attribute name="rfd_postedon" /><attribute name="rfd_balanceafter" />
+      <attribute name="rfd_transactionstatus" /><attribute name="rfd_transactiontype" /><attribute name="rfd_category" />
+      <attribute name="rfd_counterpartyname" /><attribute name="rfd_paymentreference" /><attribute name="rfd_issimulated" />
+      <filter><condition attribute="rfd_financialtransactionid" operator="eq" value="{{ context_id }}" /></filter>
+      <link-entity name="rfd_financialaccount" from="rfd_financialaccountid" to="rfd_financialaccountid" alias="owner">
+        <filter><condition attribute="rfd_customerid" operator="eq" value="{{ user.id }}" /></filter>
+      </link-entity>
+    </entity></fetch>
+    {% endfetchxml %}
+    {% assign banking_transaction = context_transaction.results.entities | first %}
+    {% if banking_transaction %}{% assign account_id = banking_transaction.rfd_financialaccountid.id %}{% endif %}
+  {% elsif context_kind == 'account' %}
+    {% assign account_id = context_id %}
+  {% endif %}
+  {% if account_id %}
+    {% fetchxml context_account %}
+    <fetch top="1"><entity name="rfd_financialaccount">
+      <attribute name="rfd_financialaccountid" /><attribute name="rfd_name" /><attribute name="rfd_holdingnumber" />
+      <attribute name="rfd_producttype" /><attribute name="rfd_currentbalance" /><attribute name="rfd_availablebalance" />
+      <attribute name="rfd_balanceasof" /><attribute name="rfd_cardlastfour" /><attribute name="rfd_cardstatus" />
+      <attribute name="rfd_lifecyclestatus" /><attribute name="rfd_carddesign" />
+      <filter><condition attribute="rfd_financialaccountid" operator="eq" value="{{ account_id }}" />
+        <condition attribute="rfd_customerid" operator="eq" value="{{ user.id }}" /></filter>
+    </entity></fetch>
+    {% endfetchxml %}
+    {% assign banking_account = context_account.results.entities | first %}
+    {% if banking_account.rfd_producttype.value == 100000005 or banking_account.rfd_producttype.value == 100000006 or banking_account.rfd_producttype.value == 100000007 %}
+      {% assign banking_is_card = true %}
+    {% endif %}
+  {% endif %}
+{% endif %}

@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="StepCode">
+  <description default="Required for workflow updates; omitted only by the trusted Case observer.">
+    <label description="Required for workflow updates; omitted only by the trusted Case observer." languagecode="1033" />
+  </description>
+  <displayname default="StepCode">
+    <label description="StepCode" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <isoptional>1</isoptional>
+  <name>rfd_UpdateEmailProcessStep.StepCode</name>
+  <type>10</type>
+</customapirequestparameter>

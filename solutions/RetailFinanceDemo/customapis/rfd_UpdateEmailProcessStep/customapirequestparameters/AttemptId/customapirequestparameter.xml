@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="AttemptId">
+  <description default="Required stable business-attempt identity for workflow updates.">
+    <label description="Required stable business-attempt identity for workflow updates." languagecode="1033" />
+  </description>
+  <displayname default="AttemptId">
+    <label description="AttemptId" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <isoptional>1</isoptional>
+  <name>rfd_UpdateEmailProcessStep.AttemptId</name>
+  <type>12</type>
+</customapirequestparameter>

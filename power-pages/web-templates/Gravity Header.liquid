@@ -1,0 +1,30 @@
+<header class="site-header" data-site-header>
+  <div class="shell site-header__inner">
+    <a class="brand" href="/" aria-label="Gravity home">
+      <img src="/gravity-lockup-horizontal-on-dark.png" alt="Gravity">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-nav-toggle>
+      <span></span><span></span><span></span>
+      <span class="sr-only">Open navigation</span>
+    </button>
+    <nav class="primary-nav" id="primary-navigation" aria-label="Primary" data-nav>
+      <a href="/everyday/">Everyday</a>
+      <a href="/save/">Save</a>
+      <a href="/home-buying/">Home</a>
+      <a href="/borrow/">Borrow</a>
+      <a href="/solar-system/">Solar System</a>
+      <a href="/proof/">Proof</a>
+    </nav>
+    <div class="site-header__actions">
+      <a class="header-help" href="/support/">Help</a>
+      {% if user %}
+        <a class="button button--small button--outline" href="/my-gravity/">My Gravity</a>
+        <a class="avatar-link" href="/Account/Manage/" aria-label="Manage profile for {{ user.fullname | escape }}">
+          {{ user.firstname | default: user.fullname | slice: 0 | upcase }}
+        </a>
+      {% else %}
+        <a class="button button--small button--outline" href="/SignIn?returnUrl=%2Fmy-gravity%2F">Sign in</a>
+      {% endif %}
+    </div>
+  </div>
+</header>

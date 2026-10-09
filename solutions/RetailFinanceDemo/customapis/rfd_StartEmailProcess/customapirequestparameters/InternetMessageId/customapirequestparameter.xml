@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="InternetMessageId">
+  <description default="InternetMessageId">
+    <label description="InternetMessageId" languagecode="1033" />
+  </description>
+  <displayname default="InternetMessageId">
+    <label description="InternetMessageId" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <isoptional>0</isoptional>
+  <name>rfd_StartEmailProcess.InternetMessageId</name>
+  <type>10</type>
+</customapirequestparameter>

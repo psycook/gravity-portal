@@ -1,0 +1,39 @@
+{
+  "solution": "RetailFinanceDemo",
+  "publisherPrefix": "rfd",
+  "displayName": "Contact Request",
+  "pluralName": "Contact Requests",
+  "schemaName": "rfd_ContactRequest",
+  "logicalName": "rfd_contactrequest",
+  "entitySetName": "rfd_contactrequests",
+  "ownership": "UserOwned",
+  "primaryName": {
+    "displayName": "Request number",
+    "schemaName": "rfd_Name",
+    "logicalName": "rfd_name",
+    "type": "Autonumber",
+    "format": "REQ-{SEQNUM:8}"
+  },
+  "columns": [
+    {"displayName":"Customer","schemaName":"rfd_CustomerId","logicalName":"rfd_customerid","type":"Lookup","target":"contact","required":true},
+    {"displayName":"Subject","schemaName":"rfd_Subject","logicalName":"rfd_subject","type":"Text","maxLength":150,"required":true},
+    {"displayName":"Details","schemaName":"rfd_Details","logicalName":"rfd_details","type":"MultilineText","maxLength":2000,"required":true},
+    {"displayName":"Request type","schemaName":"rfd_RequestType","logicalName":"rfd_requesttype","type":"Choice","required":true,"options":["General account question","Current account switching","Card or transaction concern","Savings or ISA question","Home buying or mortgage support","Borrowing support","Complaint","Money worries or Soft Landing","Accessibility or vulnerability support","Other"]},
+    {"displayName":"Preferred channel","schemaName":"rfd_PreferredChannel","logicalName":"rfd_preferredchannel","type":"Choice","required":true,"options":["Secure message","Phone call","Video call"]},
+    {"displayName":"Preferred contact detail","schemaName":"rfd_PreferredContactValue","logicalName":"rfd_preferredcontactvalue","type":"Text","maxLength":200,"required":true},
+    {"displayName":"Preferred contact time","schemaName":"rfd_PreferredContactTime","logicalName":"rfd_preferredcontacttime","type":"Choice","required":true,"options":["Any time","Morning","Afternoon","Evening"]},
+    {"displayName":"Urgency","schemaName":"rfd_Urgency","logicalName":"rfd_urgency","type":"Choice","required":true,"options":["Standard","Soon","Urgent"]},
+    {"displayName":"Request status","schemaName":"rfd_RequestStatus","logicalName":"rfd_requeststatus","type":"Choice","required":true,"default":"New","options":["New","Acknowledged","In progress","Waiting for customer","Resolved","Cancelled"]},
+    {"displayName":"Consent to contact","schemaName":"rfd_ConsentToContact","logicalName":"rfd_consenttocontact","type":"YesNo","required":true},
+    {"displayName":"Source","schemaName":"rfd_Source","logicalName":"rfd_source","type":"Choice","required":true,"default":"Power Pages","options":["Power Pages","Arc handover","Mission Control","Other"]},
+    {"displayName":"Is simulated","schemaName":"rfd_IsSimulated","logicalName":"rfd_issimulated","type":"YesNo","required":true,"default":true},
+    {"displayName":"Acknowledged on","schemaName":"rfd_AcknowledgedOn","logicalName":"rfd_acknowledgedon","type":"DateTime","required":false},
+    {"displayName":"Resolved on","schemaName":"rfd_ResolvedOn","logicalName":"rfd_resolvedon","type":"DateTime","required":false},
+    {"displayName":"Resolution summary","schemaName":"rfd_ResolutionSummary","logicalName":"rfd_resolutionsummary","type":"MultilineText","maxLength":2000,"required":false}
+  ],
+  "security": {
+    "powerPages": "Authenticated Contacts can create and read only their own rows through Contact-scoped table permission.",
+    "customerWrites": "Customers cannot update status, resolution or ownership columns.",
+    "dataRule": "All rows created by this demonstration must set Is simulated to Yes."
+  }
+}

@@ -1,0 +1,19 @@
+<customapi uniquename="rfd_GetEmailProcess">
+  <allowedcustomprocessingsteptype>0</allowedcustomprocessingsteptype>
+  <bindingtype>0</bindingtype>
+  <description default="Simplified email process tracking.">
+    <label description="Simplified email process tracking." languagecode="1033" />
+  </description>
+  <displayname default="rfd_GetEmailProcess">
+    <label description="rfd_GetEmailProcess" languagecode="1033" />
+  </displayname>
+  <executeprivilegename>prvReadrfd_emailprocess</executeprivilegename>
+  <iscustomizable>0</iscustomizable>
+  <isfunction>0</isfunction>
+  <isprivate>0</isprivate>
+  <name>rfd_GetEmailProcess</name>
+  <plugintypeid>
+    <plugintypeexportkey>4A98520F00EA711C08115BB6FF56362D55002BF17D9640BE396FAC81201D53F5</plugintypeexportkey>
+  </plugintypeid>
+  <workflowsdkstepenabled>0</workflowsdkstepenabled>
+</customapi>

@@ -1,0 +1,47 @@
+<a class="skip-link" href="#mainContent">Skip to main content</a>
+<div class="demo-banner" role="note">
+  <span class="demo-banner__dot" aria-hidden="true"></span>
+  Gravity is a fictional demonstration bank. All people, balances and activity are synthetic.
+</div>
+<header class="gravity-system-header">
+  <div class="shell gravity-system-header__inner">
+    <a class="brand" href="/" aria-label="Gravity home">
+      <img src="/gravity-lockup-horizontal-on-dark.png" alt="Gravity">
+    </a>
+    <nav class="gravity-system-nav" aria-label="Primary">
+      <a href="/everyday/">Everyday</a>
+      <a href="/save/">Save</a>
+      <a href="/home-buying/">Home</a>
+      <a href="/borrow/">Borrow</a>
+      <a href="/solar-system/">Solar System</a>
+      <a href="/proof/">Proof</a>
+    </nav>
+    <div class="gravity-system-actions">
+      <a href="/support/">Help</a>
+      <a class="button button--small button--outline" href="/">Back to Gravity</a>
+    </div>
+  </div>
+</header>
+{% if request.path contains 'SignIn' %}
+  <div class="gravity-auth-backdrop" aria-hidden="true"></div>
+  <section class="gravity-auth-intro" aria-labelledby="gravity-auth-title">
+    <div class="shell">
+      <h1 id="gravity-auth-title">Welcome back to your orbit.</h1>
+      <p>Sign in to view your synthetic accounts, transactions, cases and requests in this demonstration experience.</p>
+    </div>
+  </section>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var username = document.getElementById("Username");
+      var password = document.getElementById("PasswordValue");
+      if (username) {
+        username.placeholder = "Username";
+        username.autocomplete = "username";
+      }
+      if (password) {
+        password.placeholder = "Password";
+        password.autocomplete = "current-password";
+      }
+    });
+  </script>
+{% endif %}

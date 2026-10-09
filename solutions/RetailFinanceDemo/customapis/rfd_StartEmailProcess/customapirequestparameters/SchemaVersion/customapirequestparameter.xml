@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="SchemaVersion">
+  <description default="SchemaVersion">
+    <label description="SchemaVersion" languagecode="1033" />
+  </description>
+  <displayname default="SchemaVersion">
+    <label description="SchemaVersion" languagecode="1033" />
+  </displayname>
+  <iscustomizable>0</iscustomizable>
+  <isoptional>0</isoptional>
+  <name>rfd_StartEmailProcess.SchemaVersion</name>
+  <type>7</type>
+</customapirequestparameter>
